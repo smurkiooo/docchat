@@ -1,0 +1,79 @@
+{
+  "run_id": "8b10c5d119e94308be52ead48fc53db2",
+  "reviewed": 28,
+  "strata": {
+    "dialogue/answerable": {
+      "correctness": {
+        "passed": 4,
+        "reviewed": 4
+      },
+      "completeness": {
+        "passed": 4,
+        "reviewed": 4
+      },
+      "faithfulness": {
+        "passed": 4,
+        "reviewed": 4
+      },
+      "refusal_appropriate": {
+        "passed": 4,
+        "reviewed": 4
+      },
+      "citation_support": {
+        "passed": 4,
+        "reviewed": 4
+      }
+    },
+    "single_turn/answerable": {
+      "correctness": {
+        "passed": 13,
+        "reviewed": 16
+      },
+      "completeness": {
+        "passed": 14,
+        "reviewed": 16
+      },
+      "faithfulness": {
+        "passed": 13,
+        "reviewed": 16
+      },
+      "refusal_appropriate": {
+        "passed": 15,
+        "reviewed": 16
+      },
+      "citation_support": {
+        "passed": 11,
+        "reviewed": 15
+      }
+    },
+    "single_turn/unanswerable": {
+      "correctness": {
+        "passed": 8,
+        "reviewed": 8
+      },
+      "completeness": {
+        "passed": 8,
+        "reviewed": 8
+      },
+      "faithfulness": {
+        "passed": 8,
+        "reviewed": 8
+      },
+      "refusal_appropriate": {
+        "passed": 8,
+        "reviewed": 8
+      },
+      "citation_support": {
+        "passed": 0,
+        "reviewed": 1
+      }
+    }
+  },
+  "reviewers": [
+    "Codex (gpt-6.1-sol)"
+  ],
+  "reviewer_types": [
+    "assistant"
+  ],
+  "note": "Rubric judgments; assessor provenance is recorded; no statistical claim"
+}

@@ -1,0 +1,15 @@
+{
+  "model": "mistralai/ministral-3-3b",
+  "file": "Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
+  "sha256": "ee46f8f2cc4acf15e89699563e23b4a3919dce2e9ce7c44b53778d6590318e96",
+  "quantization": "Q4_K_M",
+  "file_size_bytes": 2146498240,
+  "context_length": 8192,
+  "parallel": 1,
+  "api_identifier": "docchat-eval",
+  "machine": "MacBook Air M1 (2020), 8 GB RAM",
+  "embedding_device": "cpu",
+  "generation_temperature": 0,
+  "generation_max_tokens": 2048,
+  "independent_human_review": false
+}

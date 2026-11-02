@@ -1,0 +1,22 @@
+{
+  "chunk_overlap": 150,
+  "chunk_size": 800,
+  "embedding_batch_size": 32,
+  "embedding_model": "intfloat/multilingual-e5-base",
+  "embedding_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+  "history_turns": 4,
+  "llm_max_tokens": 2048,
+  "llm_temperature": 0.0,
+  "llm_timeout_s": 120.0,
+  "min_chunk_chars": 200,
+  "min_lexical_coverage": 0.5,
+  "min_relevance_score": 0.8,
+  "model_device": "cpu",
+  "reranker_model": "BAAI/bge-reranker-v2-m3",
+  "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+  "rrf_k": 60,
+  "top_k_bm25": 20,
+  "top_k_final": 6,
+  "top_k_vector": 20,
+  "use_reranker": false
+}

@@ -1,0 +1,48 @@
+{
+  "health": {
+    "status": "ok",
+    "llm_provider": "openai_compatible",
+    "llm_model": "docchat-eval",
+    "llm_available": true,
+    "embedding_model": "intfloat/multilingual-e5-base"
+  },
+  "document": {
+    "id": "197740296af8428e9fa07e36fba6f5a4",
+    "filename": "aurora_t200_manual.pdf",
+    "status": "ready",
+    "progress": 1.0,
+    "pages": 9,
+    "chunks": 15,
+    "error": null,
+    "created_at": "2026-11-02T19:34:31+00:00"
+  },
+  "upload_status": 202,
+  "duplicate_status": 200,
+  "invalid_file_status": 415,
+  "empty_question_status": 422,
+  "download_status": 200,
+  "chat_event_types": [
+    "sources",
+    "token",
+    "done"
+  ],
+  "answer": "Гарантийный срок на термостат **«Аврора T-200»** составляет **36 месяцев со дня продажи** [стр. 9].",
+  "history_messages": 2,
+  "history_last_message_id": 2,
+  "document_id": "197740296af8428e9fa07e36fba6f5a4",
+  "browser": {
+    "duplicate_upload": true,
+    "question": "Какой срок службы устройства?",
+    "answer": "Срок службы термостата **«Аврора T-200»** составляет **10 лет** [стр. 9].",
+    "citation_page": 9,
+    "sources_expanded_by_citation": true
+  },
+  "restart": {
+    "document_ready": true,
+    "history_messages": 4,
+    "retrieval_and_stream_ok": true
+  },
+  "clear_history_status": 204,
+  "delete_status": 204,
+  "after_delete_get_status": 404
+}

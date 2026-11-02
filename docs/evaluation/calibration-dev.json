@@ -1,0 +1,4859 @@
+{
+  "schema_version": 1,
+  "run_id": "2a67ed024cf74a74b1de3e35258e5135",
+  "experiment_id": "7a2cff9e678ba722",
+  "config": {
+    "chunk_overlap": 150,
+    "chunk_size": 800,
+    "embedding_batch_size": 32,
+    "embedding_model": "intfloat/multilingual-e5-base",
+    "embedding_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "history_turns": 4,
+    "llm_max_tokens": 2048,
+    "llm_temperature": 0.0,
+    "llm_timeout_s": 120.0,
+    "min_chunk_chars": 200,
+    "min_lexical_coverage": 0.5,
+    "min_relevance_score": 0.72,
+    "model_device": "cpu",
+    "reranker_model": "BAAI/bge-reranker-v2-m3",
+    "reranker_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "rrf_k": 60,
+    "top_k_bm25": 20,
+    "top_k_final": 6,
+    "top_k_vector": 20,
+    "use_reranker": false
+  },
+  "backend": "real",
+  "split": "dev",
+  "data_hashes": {
+    "cases.jsonl": "91da9d42a1a12a943fbe27d7d752cca3caee891d33e9f752560bd94cda603297",
+    "dialogues.json": "656b9d37702141ebd4d41e9146f0261ae5fdd6b3078fad26a4fc9074eaef1ec7",
+    "documents.json": "9efa7606897febc888ec5c4ce907cbfe1bfe1f38dee07cb84cf98757031c3cde"
+  },
+  "llm_identity": null,
+  "packages": {
+    "chromadb": "1.5.9",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "torch": "2.14.0",
+    "PyMuPDF": "1.28.2",
+    "rank-bm25": "0.2.2",
+    "snowballstemmer": "3.1.1"
+  },
+  "prompts": null,
+  "code_sha256": "02d5b12f0dbe3e78207256218e5dccdeee1809b74a221ed228685f2ca2294022",
+  "lock_sha256": "a4e49b44ce65320f118162da63dd9b0128652cfd52b8a8336c2ce3105ee48241",
+  "corpus_version": "1.0",
+  "provenance": "Synthetic fixtures authored together with questions; not an independently held-out benchmark.",
+  "timestamp_utc": "2026-11-02T19:33:11.491534+00:00",
+  "python": "3.12.13",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "git_commit": null,
+  "model_revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+  "llm": null,
+  "complete": true,
+  "expected_predictions": 0,
+  "elapsed_s": 7.923942499997793,
+  "extracted_text_hashes": {
+    "atlas": "a4a79807395cc8f6848ba8cd0c4f4c4be3a403c85f17957e18b0d78cf24c8000",
+    "orion": "6222c8abf54682972916bf5101b800e546a8c38afabed3cf056ffbe42c4bfd4b"
+  },
+  "chunks": {
+    "atlas": [
+      {
+        "id": "atlas:0",
+        "doc_id": "atlas",
+        "index": 0,
+        "text": "Доступ в мастерскую\n\nМастерская «Атлас» открыта для участников проекта с понедельника по пятницу с 09:30 до 18:30. В субботу помещение используют только для запланированных учебных занятий.\n\nГости могут войти с сопровождающим участником. Сопровождающий регистрирует гостя в журнале на стойке; самостоятельное посещение гостями не предусмотрено.",
+        "page_start": 1,
+        "page_end": 1
+      },
+      {
+        "id": "atlas:1",
+        "doc_id": "atlas",
+        "index": 1,
+        "text": "Бронирование станков\n\nЛазерный станок L-4 бронируется не более чем на 90 минут подряд. Повторное бронирование доступно после перерыва 30 минут.\n\nДля фрезерного станка F-2 требуется отдельный допуск инструктора. Наличие допуска к лазерному станку не заменяет допуск к фрезерному.",
+        "page_start": 2,
+        "page_end": 2
+      },
+      {
+        "id": "atlas:2",
+        "doc_id": "atlas",
+        "index": 2,
+        "text": "Материалы\n\nВ лазерном станке разрешены фанера и картон из маркированного шкафа. Листы ПВХ обрабатывать запрещено из-за выделения опасных продуктов при нагреве.\n\nОстатки фанеры складывают в синий контейнер у окна. Пыль и мелкую стружку собирают в закрытый металлический бак, а не в контейнер для листов.",
+        "page_start": 3,
+        "page_end": 3
+      },
+      {
+        "id": "atlas:3",
+        "doc_id": "atlas",
+        "index": 3,
+        "text": "Отмена записи\n\nБронирование отменяют в календаре не позднее чем за 4 часа до начала. При более поздней отмене участник уведомляет дежурного по внутреннему каналу.\n\nПосле трёх пропусков без уведомления право самостоятельного бронирования приостанавливается на 14 дней. Уже согласованное занятие с инструктором сохраняется.",
+        "page_start": 4,
+        "page_end": 4
+      },
+      {
+        "id": "atlas:4",
+        "doc_id": "atlas",
+        "index": 4,
+        "text": "Учебные занятия\n\nВводное занятие длится 75 минут и проводится по средам. Группа включает не более 6 человек; записываться нужно через координатора обучения.\n\nПосле вводного занятия участник сдаёт практическую проверку для конкретного станка. Сам факт посещения занятия ещё не означает получения допуска.",
+        "page_start": 5,
+        "page_end": 5
+      },
+      {
+        "id": "atlas:5",
+        "doc_id": "atlas",
+        "index": 5,
+        "text": "Закрытие смены\n\nПоследний пользователь выключает оборудование, очищает рабочее место и записывает состояние станка в журнал. Ключ от шкафа возвращают дежурному.\n\nДежурный проверяет вентиляцию и закрывает помещение. Участники не отключают общую вентиляцию самостоятельно, даже если станки уже остановлены.",
+        "page_start": 6,
+        "page_end": 6
+      },
+      {
+        "id": "atlas:6",
+        "doc_id": "atlas",
+        "index": 6,
+        "text": "Инциденты\n\nПри повреждении инструмента работу останавливают и уведомляют дежурного. Самостоятельно менять повреждённые защитные экраны запрещено.\n\nЗаявку на ремонт записывают с кодом станка и описанием признаков неисправности. Фото прикладывают при наличии, отсутствие фото не блокирует заявку.",
+        "page_start": 7,
+        "page_end": 7
+      },
+      {
+        "id": "atlas:7",
+        "doc_id": "atlas",
+        "index": 7,
+        "text": "Учёт расходников\n\nИнвентаризацию расходных материалов проводят в первый рабочий день месяца. Ответственный сверяет маркировку и остатки с журналом выдачи.\n\nВ этой редакции описаны доступ и работа с оборудованием. Тарифы на членство, покупку материалов и коммерческую аренду в документ не включены.",
+        "page_start": 8,
+        "page_end": 8
+      }
+    ],
+    "orion": [
+      {
+        "id": "orion:0",
+        "doc_id": "orion",
+        "index": 0,
+        "text": "Назначение\n\nРегистратор «Орион R-7» записывает показания датчиков в локальную память. Эта редакция относится к аппаратной версии B и прошивке 1.8.\n\nСведения о версии A приведены только для сравнения. Её ограничения не следует автоматически переносить на версию B, для которой написана инструкция.",
+        "page_start": 1,
+        "page_end": 1
+      },
+      {
+        "id": "orion:1",
+        "doc_id": "orion",
+        "index": 1,
+        "text": "Питание\n\nВерсия B питается от источника постоянного тока 12 В. Максимальное потребление регистратора составляет 8 Вт, без учёта внешних датчиков.\n\nДля версии A использовался источник 9 В. Блок питания от версии A не предназначен для регистратора версии B.",
+        "page_start": 2,
+        "page_end": 2
+      },
+      {
+        "id": "orion:2",
+        "doc_id": "orion",
+        "index": 2,
+        "text": "Память\n\nРегистратор версии B хранит до 12000 записей. После заполнения памяти самая старая запись заменяется новой; остановка сбора не требуется.\n\nПри интервале записи 60 секунд встроенные часы добавляют отметку времени к каждой записи. Интервал меняется в настройках и сохраняется после перезагрузки.",
+        "page_start": 3,
+        "page_end": 3
+      },
+      {
+        "id": "orion:3",
+        "doc_id": "orion",
+        "index": 3,
+        "text": "Экспорт\n\nДля экспорта подключите накопитель FAT32 к порту USB и удерживайте кнопку EXPORT 3 секунды. Индикатор мигает зелёным до завершения операции.\n\nРезультат экспорта — файл CSV с кодировкой UTF-8. Существующие записи в памяти регистратора после экспорта сохраняются.",
+        "page_start": 4,
+        "page_end": 4
+      },
+      {
+        "id": "orion:4",
+        "doc_id": "orion",
+        "index": 4,
+        "text": "Связь\n\nR-7 передаёт данные по проводному интерфейсу RS-485. Беспроводного интерфейса Wi-Fi в версии B нет.\n\nАдрес устройства на шине задаётся числом от 1 до 31. Два устройства на одной шине не должны иметь одинаковый адрес.",
+        "page_start": 5,
+        "page_end": 5
+      },
+      {
+        "id": "orion:5",
+        "doc_id": "orion",
+        "index": 5,
+        "text": "Ошибки\n\nКод R12 означает отсутствие ответа датчика. Проверьте кабель датчика и его питание; ошибка не указывает на заполнение внутренней памяти.\n\nКод R21 означает ошибку записи на USB-накопитель. Проверьте формат FAT32 и свободное место, затем повторите экспорт.",
+        "page_start": 6,
+        "page_end": 6
+      },
+      {
+        "id": "orion:6",
+        "doc_id": "orion",
+        "index": 6,
+        "text": "Обслуживание\n\nКорпус очищают сухой салфеткой при отключённом питании. Не используйте жидкие очистители и не открывайте корпус во время работы.\n\nПроверка точности встроенных часов проводится каждые 180 дней. Процедуру выполняет оператор по отдельной инструкции синхронизации.",
+        "page_start": 7,
+        "page_end": 7
+      },
+      {
+        "id": "orion:7",
+        "doc_id": "orion",
+        "index": 7,
+        "text": "Хранение\n\nПри хранении без питания допускается температура от минус 10 до плюс 40 градусов Цельсия. Перед включением после холода выдержите прибор в помещении 2 часа.\n\nХранение и эксплуатация — разные режимы. Допустимая температура эксплуатации и гарантийные обязательства в этой записке не установлены.",
+        "page_start": 8,
+        "page_end": 8
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "atlas-01",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "На сколько подряд можно занять L-4?",
+      "answer": "Не более 90 минут.",
+      "evidence": [
+        [
+          {
+            "page": 2,
+            "quote": "Лазерный станок L-4 бронируется не более чем на 90 минут подряд. Повторное бронирование доступно после перерыва 30 минут."
+          }
+        ]
+      ],
+      "tags": [
+        "exact"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-02",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Могу ли я снова записаться на лазер сразу после сеанса?",
+      "answer": "Нужен перерыв 30 минут.",
+      "evidence": [
+        [
+          {
+            "page": 2,
+            "quote": "Лазерный станок L-4 бронируется не более чем на 90 минут подряд. Повторное бронирование доступно после перерыва 30 минут."
+          }
+        ]
+      ],
+      "tags": [
+        "paraphrase"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-03",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Можно ли резать ПВХ?",
+      "answer": "Нет, запрещено из-за опасных продуктов при нагреве.",
+      "evidence": [
+        [
+          {
+            "page": 3,
+            "quote": "В лазерном станке разрешены фанера и картон из маркированного шкафа. Листы ПВХ обрабатывать запрещено из-за выделения опасных продуктов при нагреве."
+          }
+        ]
+      ],
+      "tags": [
+        "negation"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-04",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Когда отменять запись и что будет после трёх неявок?",
+      "answer": "Не позднее 4 часов; после трёх пропусков без уведомления блокировка на 14 дней.",
+      "evidence": [
+        [
+          {
+            "page": 4,
+            "quote": "Бронирование отменяют в календаре не позднее чем за 4 часа до начала. При более поздней отмене участник уведомляет дежурного по внутреннему каналу."
+          }
+        ],
+        [
+          {
+            "page": 4,
+            "quote": "После трёх пропусков без уведомления право самостоятельного бронирования приостанавливается на 14 дней. Уже согласованное занятие с инструктором сохраняется."
+          }
+        ]
+      ],
+      "tags": [
+        "multi_evidence"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-05",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Достаточно ли вводного занятия для допуска к F-2?",
+      "answer": "Нет: нужна практическая проверка и отдельный допуск инструктора для F-2.",
+      "evidence": [
+        [
+          {
+            "page": 5,
+            "quote": "После вводного занятия участник сдаёт практическую проверку для конкретного станка. Сам факт посещения занятия ещё не означает получения допуска."
+          }
+        ],
+        [
+          {
+            "page": 2,
+            "quote": "Для фрезерного станка F-2 требуется отдельный допуск инструктора. Наличие допуска к лазерному станку не заменяет допуск к фрезерному."
+          }
+        ]
+      ],
+      "tags": [
+        "multi_evidence",
+        "paraphrase"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-06",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "What is the maximum introductory group size?",
+      "answer": "6 people.",
+      "evidence": [
+        [
+          {
+            "page": 5,
+            "quote": "Вводное занятие длится 75 минут и проводится по средам. Группа включает не более 6 человек; записываться нужно через координатора обучения."
+          }
+        ]
+      ],
+      "tags": [
+        "crosslingual"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-07",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Кто закрывает помещение и кто возвращает ключ?",
+      "answer": "Дежурный закрывает, последний пользователь возвращает ключ.",
+      "evidence": [
+        [
+          {
+            "page": 6,
+            "quote": "Последний пользователь выключает оборудование, очищает рабочее место и записывает состояние станка в журнал. Ключ от шкафа возвращают дежурному."
+          }
+        ],
+        [
+          {
+            "page": 6,
+            "quote": "Дежурный проверяет вентиляцию и закрывает помещение. Участники не отключают общую вентиляцию самостоятельно, даже если станки уже остановлены."
+          }
+        ]
+      ],
+      "tags": [
+        "multi_evidence"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-08",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Можно ли подать заявку на ремонт без фотографии?",
+      "answer": "Да, отсутствие фото не блокирует заявку.",
+      "evidence": [
+        [
+          {
+            "page": 7,
+            "quote": "Заявку на ремонт записывают с кодом станка и описанием признаков неисправности. Фото прикладывают при наличии, отсутствие фото не блокирует заявку."
+          }
+        ]
+      ],
+      "tags": [
+        "paraphrase"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "atlas-09",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Сколько рублей стоит месячный абонемент?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "negative_reason": "Документ исключает тарифы; стоимость месячного членства не задана."
+    },
+    {
+      "id": "atlas-10",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Какой размер рабочего поля у L-4?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "negative_reason": "L-4 указан в правилах бронирования, но размеры рабочего поля отсутствуют."
+    },
+    {
+      "id": "atlas-11",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Можно ли получить индивидуальное воскресное занятие за доплату?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "unsupported_exception"
+      ],
+      "negative_reason": "Регулярное занятие назначено на среду; индивидуальные платные исключения не описаны."
+    },
+    {
+      "id": "atlas-12",
+      "document_id": "atlas",
+      "split": "dev",
+      "question": "Кто выиграл футбольный чемпионат мира?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "out_of_domain"
+      ],
+      "negative_reason": "Документ о мастерской не содержит спортивных результатов."
+    },
+    {
+      "id": "orion-01",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "От какого напряжения работает версия B?",
+      "answer": "12 В постоянного тока.",
+      "evidence": [
+        [
+          {
+            "page": 2,
+            "quote": "Версия B питается от источника постоянного тока 12 В. Максимальное потребление регистратора составляет 8 Вт, без учёта внешних датчиков."
+          }
+        ]
+      ],
+      "tags": [
+        "version_disambiguation"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-02",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Что будет, когда накопится 12000 записей?",
+      "answer": "Самая старая запись заменяется новой.",
+      "evidence": [
+        [
+          {
+            "page": 3,
+            "quote": "Регистратор версии B хранит до 12000 записей. После заполнения памяти самая старая запись заменяется новой; остановка сбора не требуется."
+          }
+        ]
+      ],
+      "tags": [
+        "paraphrase"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-03",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Как экспортировать данные и пропадут ли исходные записи?",
+      "answer": "Накопитель FAT32, EXPORT 3 секунды; записи сохраняются.",
+      "evidence": [
+        [
+          {
+            "page": 4,
+            "quote": "Для экспорта подключите накопитель FAT32 к порту USB и удерживайте кнопку EXPORT 3 секунды. Индикатор мигает зелёным до завершения операции."
+          }
+        ],
+        [
+          {
+            "page": 4,
+            "quote": "Результат экспорта — файл CSV с кодировкой UTF-8. Существующие записи в памяти регистратора после экспорта сохраняются."
+          }
+        ]
+      ],
+      "tags": [
+        "multi_evidence"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-04",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Есть ли Wi-Fi у версии B?",
+      "answer": "Нет.",
+      "evidence": [
+        [
+          {
+            "page": 5,
+            "quote": "R-7 передаёт данные по проводному интерфейсу RS-485. Беспроводного интерфейса Wi-Fi в версии B нет."
+          }
+        ]
+      ],
+      "tags": [
+        "negation"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-05",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "What does error R21 mean?",
+      "answer": "USB write error; check FAT32 and free space.",
+      "evidence": [
+        [
+          {
+            "page": 6,
+            "quote": "Код R21 означает ошибку записи на USB-накопитель. Проверьте формат FAT32 и свободное место, затем повторите экспорт."
+          }
+        ]
+      ],
+      "tags": [
+        "crosslingual",
+        "exact"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-06",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "R12 сообщает о заполненной памяти?",
+      "answer": "Нет, об отсутствии ответа датчика.",
+      "evidence": [
+        [
+          {
+            "page": 6,
+            "quote": "Код R12 означает отсутствие ответа датчика. Проверьте кабель датчика и его питание; ошибка не указывает на заполнение внутренней памяти."
+          }
+        ]
+      ],
+      "tags": [
+        "false_premise"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-07",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Как часто сверять встроенные часы?",
+      "answer": "Каждые 180 дней.",
+      "evidence": [
+        [
+          {
+            "page": 7,
+            "quote": "Проверка точности встроенных часов проводится каждые 180 дней. Процедуру выполняет оператор по отдельной инструкции синхронизации."
+          }
+        ]
+      ],
+      "tags": [
+        "paraphrase"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-08",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Сколько ждать после хранения на холоде перед включением?",
+      "answer": "2 часа в помещении.",
+      "evidence": [
+        [
+          {
+            "page": 8,
+            "quote": "При хранении без питания допускается температура от минус 10 до плюс 40 градусов Цельсия. Перед включением после холода выдержите прибор в помещении 2 часа."
+          }
+        ]
+      ],
+      "tags": [
+        "exact"
+      ],
+      "negative_reason": null
+    },
+    {
+      "id": "orion-09",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Какой срок гарантии на R-7?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "negative_reason": "Гарантийные обязательства прямо исключены из эксплуатационной записки."
+    },
+    {
+      "id": "orion-10",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Какой допустимый диапазон рабочей температуры?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "negative_reason": "Указан диапазон хранения, а не эксплуатации; подмена режима была бы ошибкой."
+    },
+    {
+      "id": "orion-11",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Сколько стоит датчик для R-7?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "negative_reason": "Устройство и датчики описаны без цен."
+    },
+    {
+      "id": "orion-12",
+      "document_id": "orion",
+      "split": "dev",
+      "question": "Как приготовить грибной суп?",
+      "answer": null,
+      "evidence": [],
+      "tags": [
+        "unanswerable",
+        "out_of_domain"
+      ],
+      "negative_reason": "Рецепты отсутствуют в эксплуатационной записке."
+    }
+  ],
+  "rows": [
+    {
+      "case_id": "atlas-01",
+      "document_id": "atlas",
+      "question": "На сколько подряд можно занять L-4?",
+      "answerable": true,
+      "tags": [
+        "exact"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 30.691749998368323,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.8321987986564636,
+            "similarity": 0.8321987986564636
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7916610836982727,
+            "similarity": 0.7916610836982727
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7829188704490662,
+            "similarity": 0.7829188704490662
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7496572732925415,
+            "similarity": 0.7496572732925415
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7422629594802856,
+            "similarity": 0.7422629594802856
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7395713925361633,
+            "similarity": 0.7395713925361633
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.731682300567627,
+            "similarity": 0.731682300567627
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7314714789390564,
+            "similarity": 0.7314714789390564
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 3.1011734792958974,
+            "similarity": 0.8321987986564636
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 1.2928065587567692,
+            "similarity": 0.7829188704490662
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.03278688524590164,
+            "similarity": 0.8321987986564636
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.03200204813108039,
+            "similarity": 0.7829188704490662
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.016129032258064516,
+            "similarity": 0.7916610836982727
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015625,
+            "similarity": 0.7496572732925415
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015384615384615385,
+            "similarity": 0.7422629594802856
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.015151515151515152,
+            "similarity": 0.7395713925361633
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.014925373134328358,
+            "similarity": 0.731682300567627
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.014705882352941176,
+            "similarity": 0.7314714789390564
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.5,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.5,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8321987986564636,
+        "lexical_coverage": 0.5,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-02",
+      "document_id": "atlas",
+      "question": "Могу ли я снова записаться на лазер сразу после сеанса?",
+      "answerable": true,
+      "tags": [
+        "paraphrase"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 32.197665990679525,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.8294747471809387,
+            "similarity": 0.8294747471809387
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.8058222532272339,
+            "similarity": 0.8058222532272339
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.8042389154434204,
+            "similarity": 0.8042389154434204
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7934731245040894,
+            "similarity": 0.7934731245040894
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7903147339820862,
+            "similarity": 0.7903147339820862
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7824583053588867,
+            "similarity": 0.7824583053588867
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7816829681396484,
+            "similarity": 0.7816829681396484
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7727702260017395,
+            "similarity": 0.7727702260017395
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.9532156299320642,
+            "similarity": 0.8294747471809387
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.9532156299320642,
+            "similarity": 0.8058222532272339
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.8998370373945502,
+            "similarity": 0.7824583053588867
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.03278688524590164,
+            "similarity": 0.8294747471809387
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.03225806451612903,
+            "similarity": 0.8058222532272339
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.031024531024531024,
+            "similarity": 0.7824583053588867
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.015873015873015872,
+            "similarity": 0.8042389154434204
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015625,
+            "similarity": 0.7934731245040894
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.015384615384615385,
+            "similarity": 0.7903147339820862
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.014925373134328358,
+            "similarity": 0.7816829681396484
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.014705882352941176,
+            "similarity": 0.7727702260017395
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8294747471809387,
+        "lexical_coverage": 0.14285714285714285,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-03",
+      "document_id": "atlas",
+      "question": "Можно ли резать ПВХ?",
+      "answerable": true,
+      "tags": [
+        "negation"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.397124999784864,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.81014084815979,
+            "similarity": 0.81014084815979
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7611014246940613,
+            "similarity": 0.7611014246940613
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7523375153541565,
+            "similarity": 0.7523375153541565
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7483242750167847,
+            "similarity": 0.7483242750167847
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7447245717048645,
+            "similarity": 0.7447245717048645
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7321463227272034,
+            "similarity": 0.7321463227272034
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7292865514755249,
+            "similarity": 0.7292865514755249
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.725037157535553,
+            "similarity": 0.725037157535553
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:2",
+            "score": 1.7819406127902313,
+            "similarity": 0.81014084815979
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.03278688524590164,
+            "similarity": 0.81014084815979
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.016129032258064516,
+            "similarity": 0.7611014246940613
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.015873015873015872,
+            "similarity": 0.7523375153541565
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015625,
+            "similarity": 0.7483242750167847
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.015384615384615385,
+            "similarity": 0.7447245717048645
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.015151515151515152,
+            "similarity": 0.7321463227272034
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.014925373134328358,
+            "similarity": 0.7292865514755249
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.014705882352941176,
+            "similarity": 0.725037157535553
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 1.0,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 1.0,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.81014084815979,
+        "lexical_coverage": 0.3333333333333333,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-04",
+      "document_id": "atlas",
+      "question": "Когда отменять запись и что будет после трёх неявок?",
+      "answerable": true,
+      "tags": [
+        "multi_evidence"
+      ],
+      "evidence_groups": 2,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 32.03420800855383,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.8422068953514099,
+            "similarity": 0.8422068953514099
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7927418351173401,
+            "similarity": 0.7927418351173401
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7878298759460449,
+            "similarity": 0.7878298759460449
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7755171656608582,
+            "similarity": 0.7755171656608582
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7701913714408875,
+            "similarity": 0.7701913714408875
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.7628200054168701,
+            "similarity": 0.7628200054168701
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7375929951667786,
+            "similarity": 0.7375929951667786
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7358285188674927,
+            "similarity": 0.7358285188674927
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:3",
+            "score": 4.569949471010322,
+            "similarity": 0.8422068953514099
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.9532156299320642,
+            "similarity": 0.7628200054168701
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.8998370373945502,
+            "similarity": 0.7701913714408875
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.03278688524590164,
+            "similarity": 0.8422068953514099
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.03128054740957967,
+            "similarity": 0.7628200054168701
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.03125763125763126,
+            "similarity": 0.7701913714408875
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.016129032258064516,
+            "similarity": 0.7927418351173401
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015873015873015872,
+            "similarity": 0.7878298759460449
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015625,
+            "similarity": 0.7755171656608582
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.014925373134328358,
+            "similarity": 0.7375929951667786
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.014705882352941176,
+            "similarity": 0.7358285188674927
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8422068953514099,
+        "lexical_coverage": 0.5,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-05",
+      "document_id": "atlas",
+      "question": "Достаточно ли вводного занятия для допуска к F-2?",
+      "answerable": true,
+      "tags": [
+        "multi_evidence",
+        "paraphrase"
+      ],
+      "evidence_groups": 2,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.134041986661032,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.848216712474823,
+            "similarity": 0.848216712474823
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.8344545960426331,
+            "similarity": 0.8344545960426331
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7910016179084778,
+            "similarity": 0.7910016179084778
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7883222699165344,
+            "similarity": 0.7883222699165344
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7702430486679077,
+            "similarity": 0.7702430486679077
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7653836607933044,
+            "similarity": 0.7653836607933044
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7621004581451416,
+            "similarity": 0.7621004581451416
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7492397427558899,
+            "similarity": 0.7492397427558899
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 5.371847150325989,
+            "similarity": 0.848216712474823
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 3.954204815501219,
+            "similarity": 0.8344545960426331
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.9532156299320642,
+            "similarity": 0.7910016179084778
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.912613268254816,
+            "similarity": 0.7883222699165344
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.03278688524590164,
+            "similarity": 0.848216712474823
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.03225806451612903,
+            "similarity": 0.8344545960426331
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.031746031746031744,
+            "similarity": 0.7910016179084778
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.03125,
+            "similarity": 0.7883222699165344
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.7702430486679077
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015151515151515152,
+            "similarity": 0.7653836607933044
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.014925373134328358,
+            "similarity": 0.7621004581451416
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.014705882352941176,
+            "similarity": 0.7492397427558899
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 0.5,
+          "complete@1": 0.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.6666666666666666,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 0.5,
+          "complete@1": 0.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.6666666666666666,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.5,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 0.5,
+          "complete@1": 0.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.6666666666666666,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.848216712474823,
+        "lexical_coverage": 0.6,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-06",
+      "document_id": "atlas",
+      "question": "What is the maximum introductory group size?",
+      "answerable": true,
+      "tags": [
+        "crosslingual"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.62137500476092,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.769567608833313,
+            "similarity": 0.769567608833313
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7394208312034607,
+            "similarity": 0.7394208312034607
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7172547578811646,
+            "similarity": 0.7172547578811646
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.7140368223190308,
+            "similarity": 0.7140368223190308
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7095747590065002,
+            "similarity": 0.7095747590065002
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.6981239914894104,
+            "similarity": 0.6981239914894104
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.6976752877235413,
+            "similarity": 0.6976752877235413
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.6854791045188904,
+            "similarity": 0.6854791045188904
+          }
+        ],
+        "bm25": [],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.01639344262295082,
+            "similarity": 0.769567608833313
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.016129032258064516,
+            "similarity": 0.7394208312034607
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015873015873015872,
+            "similarity": 0.7172547578811646
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.015625,
+            "similarity": 0.7140368223190308
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.015384615384615385,
+            "similarity": 0.7095747590065002
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.015151515151515152,
+            "similarity": 0.6981239914894104
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.014925373134328358,
+            "similarity": 0.6976752877235413
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.014705882352941176,
+            "similarity": 0.6854791045188904
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 0.0,
+          "complete@1": 0.0,
+          "hit@1": 0.0,
+          "precision@1": 0.0,
+          "evidence_recall@3": 0.0,
+          "complete@3": 0.0,
+          "hit@3": 0.0,
+          "precision@3": 0.0,
+          "evidence_recall@6": 0.0,
+          "complete@6": 0.0,
+          "hit@6": 0.0,
+          "precision@6": 0.0,
+          "mrr@6": 0.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.769567608833313,
+        "lexical_coverage": 0.0,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-07",
+      "document_id": "atlas",
+      "question": "Кто закрывает помещение и кто возвращает ключ?",
+      "answerable": true,
+      "tags": [
+        "multi_evidence"
+      ],
+      "evidence_groups": 2,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 32.81270799925551,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.8572945594787598,
+            "similarity": 0.8572945594787598
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7900987863540649,
+            "similarity": 0.7900987863540649
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7772977352142334,
+            "similarity": 0.7772977352142334
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7669784426689148,
+            "similarity": 0.7669784426689148
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7661879062652588,
+            "similarity": 0.7661879062652588
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7627015709877014,
+            "similarity": 0.7627015709877014
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7542802095413208,
+            "similarity": 0.7542802095413208
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.7535878419876099,
+            "similarity": 0.7535878419876099
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:5",
+            "score": 6.819034087479933,
+            "similarity": 0.8572945594787598
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 1.2377392709059585,
+            "similarity": 0.7661879062652588
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.03278688524590164,
+            "similarity": 0.8572945594787598
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.0315136476426799,
+            "similarity": 0.7661879062652588
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.016129032258064516,
+            "similarity": 0.7900987863540649
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.015873015873015872,
+            "similarity": 0.7772977352142334
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.015625,
+            "similarity": 0.7669784426689148
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015151515151515152,
+            "similarity": 0.7627015709877014
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.014925373134328358,
+            "similarity": 0.7542802095413208
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.014705882352941176,
+            "similarity": 0.7535878419876099
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.5,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.5,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8572945594787598,
+        "lexical_coverage": 1.0,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-08",
+      "document_id": "atlas",
+      "question": "Можно ли подать заявку на ремонт без фотографии?",
+      "answerable": true,
+      "tags": [
+        "paraphrase"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 30.79012500529643,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.843310534954071,
+            "similarity": 0.843310534954071
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.766492486000061,
+            "similarity": 0.766492486000061
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7646914720535278,
+            "similarity": 0.7646914720535278
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7607597708702087,
+            "similarity": 0.7607597708702087
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7602139115333557,
+            "similarity": 0.7602139115333557
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7570561170578003,
+            "similarity": 0.7570561170578003
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7564104795455933,
+            "similarity": 0.7564104795455933
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.7490808963775635,
+            "similarity": 0.7490808963775635
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:6",
+            "score": 4.4958183414363795,
+            "similarity": 0.843310534954071
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.03278688524590164,
+            "similarity": 0.843310534954071
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.016129032258064516,
+            "similarity": 0.766492486000061
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.015873015873015872,
+            "similarity": 0.7646914720535278
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015625,
+            "similarity": 0.7607597708702087
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.015384615384615385,
+            "similarity": 0.7602139115333557
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.015151515151515152,
+            "similarity": 0.7570561170578003
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.014925373134328358,
+            "similarity": 0.7564104795455933
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.014705882352941176,
+            "similarity": 0.7490808963775635
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 1.0,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 1.0,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.843310534954071,
+        "lexical_coverage": 0.4,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "atlas-09",
+      "document_id": "atlas",
+      "question": "Сколько рублей стоит месячный абонемент?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 32.72099999594502,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7916003465652466,
+            "similarity": 0.7916003465652466
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7751694917678833,
+            "similarity": 0.7751694917678833
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.755556583404541,
+            "similarity": 0.755556583404541
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7516352534294128,
+            "similarity": 0.7516352534294128
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7365973591804504,
+            "similarity": 0.7365973591804504
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.735399603843689,
+            "similarity": 0.735399603843689
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7182438373565674,
+            "similarity": 0.7182438373565674
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7088043093681335,
+            "similarity": 0.7088043093681335
+          }
+        ],
+        "bm25": [],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.01639344262295082,
+            "similarity": 0.7916003465652466
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.016129032258064516,
+            "similarity": 0.7751694917678833
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.015873015873015872,
+            "similarity": 0.755556583404541
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.015625,
+            "similarity": 0.7516352534294128
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.7365973591804504
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015151515151515152,
+            "similarity": 0.735399603843689
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.014925373134328358,
+            "similarity": 0.7182438373565674
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.014705882352941176,
+            "similarity": 0.7088043093681335
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.7916003465652466,
+        "lexical_coverage": 0.0,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "atlas-10",
+      "document_id": "atlas",
+      "question": "Какой размер рабочего поля у L-4?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 31.600208007148467,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.7976961135864258,
+            "similarity": 0.7976961135864258
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.7636509537696838,
+            "similarity": 0.7636509537696838
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7565138339996338,
+            "similarity": 0.7565138339996338
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7497270703315735,
+            "similarity": 0.7497270703315735
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7451658844947815,
+            "similarity": 0.7451658844947815
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7399551272392273,
+            "similarity": 0.7399551272392273
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.7387601137161255,
+            "similarity": 0.7387601137161255
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.7372051477432251,
+            "similarity": 0.7372051477432251
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:5",
+            "score": 1.3122675815940026,
+            "similarity": 0.7399551272392273
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 1.2928065587567692,
+            "similarity": 0.7976961135864258
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 1.2928065587567692,
+            "similarity": 0.7372051477432251
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 1.2928065587567692,
+            "similarity": 0.7387601137161255
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.03252247488101534,
+            "similarity": 0.7976961135864258
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.031544957774465976,
+            "similarity": 0.7399551272392273
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.03057889822595705,
+            "similarity": 0.7372051477432251
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.03055037313432836,
+            "similarity": 0.7387601137161255
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.016129032258064516,
+            "similarity": 0.7636509537696838
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.015873015873015872,
+            "similarity": 0.7565138339996338
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015625,
+            "similarity": 0.7497270703315735
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.015384615384615385,
+            "similarity": 0.7451658844947815
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.7976961135864258,
+        "lexical_coverage": 0.25,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "atlas-11",
+      "document_id": "atlas",
+      "question": "Можно ли получить индивидуальное воскресное занятие за доплату?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "unsupported_exception"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 31.05370899720583,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.8049730062484741,
+            "similarity": 0.8049730062484741
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.7852674722671509,
+            "similarity": 0.7852674722671509
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.777937650680542,
+            "similarity": 0.777937650680542
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.7778357863426208,
+            "similarity": 0.7778357863426208
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.7625941634178162,
+            "similarity": 0.7625941634178162
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.758200466632843,
+            "similarity": 0.758200466632843
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.7453027963638306,
+            "similarity": 0.7453027963638306
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.7343485951423645,
+            "similarity": 0.7343485951423645
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 1.6793475036995997,
+            "similarity": 0.8049730062484741
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.9532156299320642,
+            "similarity": 0.777937650680542
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.912613268254816,
+            "similarity": 0.7852674722671509
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.03278688524590164,
+            "similarity": 0.8049730062484741
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.03200204813108039,
+            "similarity": 0.7852674722671509
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.03200204813108039,
+            "similarity": 0.777937650680542
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.015625,
+            "similarity": 0.7778357863426208
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.015384615384615385,
+            "similarity": 0.7625941634178162
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015151515151515152,
+            "similarity": 0.758200466632843
+          },
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.014925373134328358,
+            "similarity": 0.7453027963638306
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.014705882352941176,
+            "similarity": 0.7343485951423645
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8049730062484741,
+        "lexical_coverage": 0.16666666666666666,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "atlas-12",
+      "document_id": "atlas",
+      "question": "Кто выиграл футбольный чемпионат мира?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "out_of_domain"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 30.8062499971129,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.696509838104248,
+            "similarity": 0.696509838104248
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.6830381155014038,
+            "similarity": 0.6830381155014038
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.6766663193702698,
+            "similarity": 0.6766663193702698
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.6754605174064636,
+            "similarity": 0.6754605174064636
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.6738043427467346,
+            "similarity": 0.6738043427467346
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.6718131303787231,
+            "similarity": 0.6718131303787231
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.6576970815658569,
+            "similarity": 0.6576970815658569
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.6566400527954102,
+            "similarity": 0.6566400527954102
+          }
+        ],
+        "bm25": [],
+        "hybrid": [
+          {
+            "chunk_id": "atlas:5",
+            "score": 0.01639344262295082,
+            "similarity": 0.696509838104248
+          },
+          {
+            "chunk_id": "atlas:6",
+            "score": 0.016129032258064516,
+            "similarity": 0.6830381155014038
+          },
+          {
+            "chunk_id": "atlas:2",
+            "score": 0.015873015873015872,
+            "similarity": 0.6766663193702698
+          },
+          {
+            "chunk_id": "atlas:3",
+            "score": 0.015625,
+            "similarity": 0.6754605174064636
+          },
+          {
+            "chunk_id": "atlas:4",
+            "score": 0.015384615384615385,
+            "similarity": 0.6738043427467346
+          },
+          {
+            "chunk_id": "atlas:7",
+            "score": 0.015151515151515152,
+            "similarity": 0.6718131303787231
+          },
+          {
+            "chunk_id": "atlas:1",
+            "score": 0.014925373134328358,
+            "similarity": 0.6576970815658569
+          },
+          {
+            "chunk_id": "atlas:0",
+            "score": 0.014705882352941176,
+            "similarity": 0.6566400527954102
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.696509838104248,
+        "lexical_coverage": 0.0,
+        "accepted": false,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "orion-01",
+      "document_id": "orion",
+      "question": "От какого напряжения работает версия B?",
+      "answerable": true,
+      "tags": [
+        "version_disambiguation"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 30.295959004433826,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:1",
+            "score": 0.8527637124061584,
+            "similarity": 0.8527637124061584
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.8262302875518799,
+            "similarity": 0.8262302875518799
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.8079697489738464,
+            "similarity": 0.8079697489738464
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.8048503398895264,
+            "similarity": 0.8048503398895264
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7671985626220703,
+            "similarity": 0.7671985626220703
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7501987218856812,
+            "similarity": 0.7501987218856812
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7445034980773926,
+            "similarity": 0.7445034980773926
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7436200976371765,
+            "similarity": 0.7436200976371765
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:1",
+            "score": 1.299484533665975,
+            "similarity": 0.8527637124061584
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 1.1794136126682473,
+            "similarity": 0.8048503398895264
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7196932427941559,
+            "similarity": 0.8262302875518799
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.6591111147958949,
+            "similarity": 0.8079697489738464
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:1",
+            "score": 0.03278688524590164,
+            "similarity": 0.8527637124061584
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.03200204813108039,
+            "similarity": 0.8262302875518799
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.031754032258064516,
+            "similarity": 0.8048503398895264
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.03149801587301587,
+            "similarity": 0.8079697489738464
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.7671985626220703
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.015151515151515152,
+            "similarity": 0.7501987218856812
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.014925373134328358,
+            "similarity": 0.7445034980773926
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.014705882352941176,
+            "similarity": 0.7436200976371765
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.25,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8527637124061584,
+        "lexical_coverage": 0.25,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-02",
+      "document_id": "orion",
+      "question": "Что будет, когда накопится 12000 записей?",
+      "answerable": true,
+      "tags": [
+        "paraphrase"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.51020900986623,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:2",
+            "score": 0.8149787187576294,
+            "similarity": 0.8149787187576294
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7870211601257324,
+            "similarity": 0.7870211601257324
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.768528163433075,
+            "similarity": 0.768528163433075
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7619223594665527,
+            "similarity": 0.7619223594665527
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7543066143989563,
+            "similarity": 0.7543066143989563
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7495114803314209,
+            "similarity": 0.7495114803314209
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7489300966262817,
+            "similarity": 0.7489300966262817
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7096383571624756,
+            "similarity": 0.7096383571624756
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:2",
+            "score": 3.233980918989954,
+            "similarity": 0.8149787187576294
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.9108641603050107,
+            "similarity": 0.768528163433075
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.8856596178215517,
+            "similarity": 0.7870211601257324
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:2",
+            "score": 0.03278688524590164,
+            "similarity": 0.8149787187576294
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.03200204813108039,
+            "similarity": 0.7870211601257324
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.03200204813108039,
+            "similarity": 0.768528163433075
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.015625,
+            "similarity": 0.7619223594665527
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.015384615384615385,
+            "similarity": 0.7543066143989563
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.015151515151515152,
+            "similarity": 0.7495114803314209
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.014925373134328358,
+            "similarity": 0.7489300966262817
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.014705882352941176,
+            "similarity": 0.7096383571624756
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8149787187576294,
+        "lexical_coverage": 0.5,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-03",
+      "document_id": "orion",
+      "question": "Как экспортировать данные и пропадут ли исходные записи?",
+      "answerable": true,
+      "tags": [
+        "multi_evidence"
+      ],
+      "evidence_groups": 2,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.274042004952207,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:3",
+            "score": 0.8429582118988037,
+            "similarity": 0.8429582118988037
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7973407506942749,
+            "similarity": 0.7973407506942749
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7778337001800537,
+            "similarity": 0.7778337001800537
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7750255465507507,
+            "similarity": 0.7750255465507507
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7636480927467346,
+            "similarity": 0.7636480927467346
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7615408301353455,
+            "similarity": 0.7615408301353455
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7614427804946899,
+            "similarity": 0.7614427804946899
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7399116158485413,
+            "similarity": 0.7399116158485413
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:4",
+            "score": 1.8603800446452996,
+            "similarity": 0.7399116158485413
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 1.5302034034340488,
+            "similarity": 0.7750255465507507
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.9108641603050107,
+            "similarity": 0.8429582118988037
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.8856596178215517,
+            "similarity": 0.7973407506942749
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:3",
+            "score": 0.032266458495966696,
+            "similarity": 0.8429582118988037
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.031754032258064516,
+            "similarity": 0.7973407506942749
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.031754032258064516,
+            "similarity": 0.7750255465507507
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.031099324975891997,
+            "similarity": 0.7399116158485413
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.015873015873015872,
+            "similarity": 0.7778337001800537
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.015384615384615385,
+            "similarity": 0.7636480927467346
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.015151515151515152,
+            "similarity": 0.7615408301353455
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.014925373134328358,
+            "similarity": 0.7614427804946899
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 0.0,
+          "complete@1": 0.0,
+          "hit@1": 0.0,
+          "precision@1": 0.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.25,
+          "mrr@6": 0.3333333333333333
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8429582118988037,
+        "lexical_coverage": 0.2,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-04",
+      "document_id": "orion",
+      "question": "Есть ли Wi-Fi у версии B?",
+      "answerable": true,
+      "tags": [
+        "negation"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 30.487166994134896,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:4",
+            "score": 0.853790283203125,
+            "similarity": 0.853790283203125
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.8127617835998535,
+            "similarity": 0.8127617835998535
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7978573441505432,
+            "similarity": 0.7978573441505432
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7779175043106079,
+            "similarity": 0.7779175043106079
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7624385356903076,
+            "similarity": 0.7624385356903076
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7388318181037903,
+            "similarity": 0.7388318181037903
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7381615042686462,
+            "similarity": 0.7381615042686462
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7336477041244507,
+            "similarity": 0.7336477041244507
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:4",
+            "score": 4.440453332084755,
+            "similarity": 0.853790283203125
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 1.299484533665975,
+            "similarity": 0.8127617835998535
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 1.1794136126682473,
+            "similarity": 0.7779175043106079
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.6591111147958949,
+            "similarity": 0.7978573441505432
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:4",
+            "score": 0.03278688524590164,
+            "similarity": 0.853790283203125
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.03225806451612903,
+            "similarity": 0.8127617835998535
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.03149801587301587,
+            "similarity": 0.7978573441505432
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.03149801587301587,
+            "similarity": 0.7779175043106079
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.7624385356903076
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.015151515151515152,
+            "similarity": 0.7388318181037903
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.014925373134328358,
+            "similarity": 0.7381615042686462
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.014705882352941176,
+            "similarity": 0.7336477041244507
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.25,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.853790283203125,
+        "lexical_coverage": 1.0,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-05",
+      "document_id": "orion",
+      "question": "What does error R21 mean?",
+      "answerable": true,
+      "tags": [
+        "crosslingual",
+        "exact"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.1598749976838,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:5",
+            "score": 0.8370487689971924,
+            "similarity": 0.8370487689971924
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7422763705253601,
+            "similarity": 0.7422763705253601
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.741597592830658,
+            "similarity": 0.741597592830658
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7229980230331421,
+            "similarity": 0.7229980230331421
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7140873670578003,
+            "similarity": 0.7140873670578003
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7139574289321899,
+            "similarity": 0.7139574289321899
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7101231813430786,
+            "similarity": 0.7101231813430786
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.6953282952308655,
+            "similarity": 0.6953282952308655
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:5",
+            "score": 3.3604097655007332,
+            "similarity": 0.8370487689971924
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:5",
+            "score": 0.03278688524590164,
+            "similarity": 0.8370487689971924
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.016129032258064516,
+            "similarity": 0.7422763705253601
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.015873015873015872,
+            "similarity": 0.741597592830658
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.015625,
+            "similarity": 0.7229980230331421
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.015384615384615385,
+            "similarity": 0.7140873670578003
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.015151515151515152,
+            "similarity": 0.7139574289321899
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.014925373134328358,
+            "similarity": 0.7101231813430786
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.014705882352941176,
+            "similarity": 0.6953282952308655
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 1.0,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 1.0,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8370487689971924,
+        "lexical_coverage": 0.5,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-06",
+      "document_id": "orion",
+      "question": "R12 сообщает о заполненной памяти?",
+      "answerable": true,
+      "tags": [
+        "false_premise"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 30.72079199773725,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:5",
+            "score": 0.8481511473655701,
+            "similarity": 0.8481511473655701
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.8265569806098938,
+            "similarity": 0.8265569806098938
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.8071719408035278,
+            "similarity": 0.8071719408035278
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7921785712242126,
+            "similarity": 0.7921785712242126
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7803346514701843,
+            "similarity": 0.7803346514701843
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7618607878684998,
+            "similarity": 0.7618607878684998
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7572371959686279,
+            "similarity": 0.7572371959686279
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7518219947814941,
+            "similarity": 0.7518219947814941
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:5",
+            "score": 4.968230821038818,
+            "similarity": 0.8481511473655701
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 2.1161203852295847,
+            "similarity": 0.8265569806098938
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 1.3720274727512891,
+            "similarity": 0.7921785712242126
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.9108641603050107,
+            "similarity": 0.7618607878684998
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:5",
+            "score": 0.03278688524590164,
+            "similarity": 0.8481511473655701
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.03225806451612903,
+            "similarity": 0.8265569806098938
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.03149801587301587,
+            "similarity": 0.7921785712242126
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.030776515151515152,
+            "similarity": 0.7618607878684998
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.015873015873015872,
+            "similarity": 0.8071719408035278
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.015384615384615385,
+            "similarity": 0.7803346514701843
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.014925373134328358,
+            "similarity": 0.7572371959686279
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.014705882352941176,
+            "similarity": 0.7518219947814941
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.25,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8481511473655701,
+        "lexical_coverage": 0.8,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-07",
+      "document_id": "orion",
+      "question": "Как часто сверять встроенные часы?",
+      "answerable": true,
+      "tags": [
+        "paraphrase"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 30.688124999869615,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:6",
+            "score": 0.8251948356628418,
+            "similarity": 0.8251948356628418
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7836897373199463,
+            "similarity": 0.7836897373199463
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7697981595993042,
+            "similarity": 0.7697981595993042
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7509927749633789,
+            "similarity": 0.7509927749633789
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7478724718093872,
+            "similarity": 0.7478724718093872
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7459692358970642,
+            "similarity": 0.7459692358970642
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7306077480316162,
+            "similarity": 0.7306077480316162
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7304043173789978,
+            "similarity": 0.7304043173789978
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:6",
+            "score": 2.3106233653187718,
+            "similarity": 0.8251948356628418
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 2.1161203852295847,
+            "similarity": 0.7836897373199463
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.924012159411258,
+            "similarity": 0.7697981595993042
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:6",
+            "score": 0.03278688524590164,
+            "similarity": 0.8251948356628418
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.03225806451612903,
+            "similarity": 0.7836897373199463
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.031746031746031744,
+            "similarity": 0.7697981595993042
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.015625,
+            "similarity": 0.7509927749633789
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.015384615384615385,
+            "similarity": 0.7478724718093872
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.015151515151515152,
+            "similarity": 0.7459692358970642
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.014925373134328358,
+            "similarity": 0.7306077480316162
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.014705882352941176,
+            "similarity": 0.7304043173789978
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8251948356628418,
+        "lexical_coverage": 0.5,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-08",
+      "document_id": "orion",
+      "question": "Сколько ждать после хранения на холоде перед включением?",
+      "answerable": true,
+      "tags": [
+        "exact"
+      ],
+      "evidence_groups": 1,
+      "oracle_evidence_recall": 1.0,
+      "ranking_pass_ms": 31.064541995874606,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:7",
+            "score": 0.8734728097915649,
+            "similarity": 0.8734728097915649
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.8058235049247742,
+            "similarity": 0.8058235049247742
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.8015634417533875,
+            "similarity": 0.8015634417533875
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7963468432426453,
+            "similarity": 0.7963468432426453
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.795783281326294,
+            "similarity": 0.795783281326294
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7831770777702332,
+            "similarity": 0.7831770777702332
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7817171812057495,
+            "similarity": 0.7817171812057495
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7356036901473999,
+            "similarity": 0.7356036901473999
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:7",
+            "score": 9.132900576124243,
+            "similarity": 0.8734728097915649
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 1.3012345147214441,
+            "similarity": 0.8015634417533875
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.9108641603050107,
+            "similarity": 0.7963468432426453
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:7",
+            "score": 0.03278688524590164,
+            "similarity": 0.8734728097915649
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.03200204813108039,
+            "similarity": 0.8015634417533875
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.03149801587301587,
+            "similarity": 0.7963468432426453
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.016129032258064516,
+            "similarity": 0.8058235049247742
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.795783281326294
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.015151515151515152,
+            "similarity": 0.7831770777702332
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.014925373134328358,
+            "similarity": 0.7817171812057495
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.014705882352941176,
+            "similarity": 0.7356036901473999
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        },
+        "bm25": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.3333333333333333,
+          "mrr@6": 1.0
+        },
+        "hybrid": {
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8734728097915649,
+        "lexical_coverage": 0.8333333333333334,
+        "accepted": true,
+        "complete_evidence": true
+      }
+    },
+    {
+      "case_id": "orion-09",
+      "document_id": "orion",
+      "question": "Какой срок гарантии на R-7?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 30.832832999294624,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:4",
+            "score": 0.8158419132232666,
+            "similarity": 0.8158419132232666
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7986136078834534,
+            "similarity": 0.7986136078834534
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7810066342353821,
+            "similarity": 0.7810066342353821
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7727468609809875,
+            "similarity": 0.7727468609809875
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7690173387527466,
+            "similarity": 0.7690173387527466
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7670941948890686,
+            "similarity": 0.7670941948890686
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7658326625823975,
+            "similarity": 0.7658326625823975
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7373125553131104,
+            "similarity": 0.7373125553131104
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:0",
+            "score": 1.3299908863521006,
+            "similarity": 0.7986136078834534
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 1.3299908863521006,
+            "similarity": 0.8158419132232666
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:4",
+            "score": 0.03252247488101534,
+            "similarity": 0.8158419132232666
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.03252247488101534,
+            "similarity": 0.7986136078834534
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.015873015873015872,
+            "similarity": 0.7810066342353821
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.015625,
+            "similarity": 0.7727468609809875
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.015384615384615385,
+            "similarity": 0.7690173387527466
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.015151515151515152,
+            "similarity": 0.7670941948890686
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.014925373134328358,
+            "similarity": 0.7658326625823975
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.014705882352941176,
+            "similarity": 0.7373125553131104
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8158419132232666,
+        "lexical_coverage": 0.3333333333333333,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "orion-10",
+      "document_id": "orion",
+      "question": "Какой допустимый диапазон рабочей температуры?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 30.870667003910057,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:7",
+            "score": 0.8242310881614685,
+            "similarity": 0.8242310881614685
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7733938097953796,
+            "similarity": 0.7733938097953796
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.7619900703430176,
+            "similarity": 0.7619900703430176
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7409408092498779,
+            "similarity": 0.7409408092498779
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7404177784919739,
+            "similarity": 0.7404177784919739
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.728126049041748,
+            "similarity": 0.728126049041748
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7213860750198364,
+            "similarity": 0.7213860750198364
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.7157595157623291,
+            "similarity": 0.7157595157623291
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:7",
+            "score": 4.272787471647616,
+            "similarity": 0.8242310881614685
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:7",
+            "score": 0.03278688524590164,
+            "similarity": 0.8242310881614685
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.016129032258064516,
+            "similarity": 0.7733938097953796
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.015873015873015872,
+            "similarity": 0.7619900703430176
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.015625,
+            "similarity": 0.7409408092498779
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.7404177784919739
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.015151515151515152,
+            "similarity": 0.728126049041748
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.014925373134328358,
+            "similarity": 0.7213860750198364
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.014705882352941176,
+            "similarity": 0.7157595157623291
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8242310881614685,
+        "lexical_coverage": 0.5,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "orion-11",
+      "document_id": "orion",
+      "question": "Сколько стоит датчик для R-7?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "hard_negative"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 30.13370900589507,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:0",
+            "score": 0.8323341012001038,
+            "similarity": 0.8323341012001038
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.8170011043548584,
+            "similarity": 0.8170011043548584
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.8163108825683594,
+            "similarity": 0.8163108825683594
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7872046232223511,
+            "similarity": 0.7872046232223511
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.7711315751075745,
+            "similarity": 0.7711315751075745
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7610676884651184,
+            "similarity": 0.7610676884651184
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7608591914176941,
+            "similarity": 0.7608591914176941
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7397652864456177,
+            "similarity": 0.7397652864456177
+          }
+        ],
+        "bm25": [
+          {
+            "chunk_id": "orion:0",
+            "score": 2.3106233653187718,
+            "similarity": 0.8323341012001038
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 1.3299908863521006,
+            "similarity": 0.8170011043548584
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 1.2881421607443697,
+            "similarity": 0.7872046232223511
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 1.0116270085916055,
+            "similarity": 0.8163108825683594
+          }
+        ],
+        "hybrid": [
+          {
+            "chunk_id": "orion:0",
+            "score": 0.03278688524590164,
+            "similarity": 0.8323341012001038
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.03225806451612903,
+            "similarity": 0.8170011043548584
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.03149801587301587,
+            "similarity": 0.8163108825683594
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.03149801587301587,
+            "similarity": 0.7872046232223511
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.015384615384615385,
+            "similarity": 0.7711315751075745
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.015151515151515152,
+            "similarity": 0.7610676884651184
+          },
+          {
+            "chunk_id": "orion:6",
+            "score": 0.014925373134328358,
+            "similarity": 0.7608591914176941
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.014705882352941176,
+            "similarity": 0.7397652864456177
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.8323341012001038,
+        "lexical_coverage": 0.6666666666666666,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    },
+    {
+      "case_id": "orion-12",
+      "document_id": "orion",
+      "question": "Как приготовить грибной суп?",
+      "answerable": false,
+      "tags": [
+        "unanswerable",
+        "out_of_domain"
+      ],
+      "evidence_groups": 0,
+      "oracle_evidence_recall": null,
+      "ranking_pass_ms": 31.285250006476417,
+      "rankings": {
+        "dense": [
+          {
+            "chunk_id": "orion:6",
+            "score": 0.7556997537612915,
+            "similarity": 0.7556997537612915
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.7487078905105591,
+            "similarity": 0.7487078905105591
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.74295574426651,
+            "similarity": 0.74295574426651
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.720227837562561,
+            "similarity": 0.720227837562561
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.7193518280982971,
+            "similarity": 0.7193518280982971
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.7113950848579407,
+            "similarity": 0.7113950848579407
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.7095245122909546,
+            "similarity": 0.7095245122909546
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.6960538625717163,
+            "similarity": 0.6960538625717163
+          }
+        ],
+        "bm25": [],
+        "hybrid": [
+          {
+            "chunk_id": "orion:6",
+            "score": 0.01639344262295082,
+            "similarity": 0.7556997537612915
+          },
+          {
+            "chunk_id": "orion:3",
+            "score": 0.016129032258064516,
+            "similarity": 0.7487078905105591
+          },
+          {
+            "chunk_id": "orion:7",
+            "score": 0.015873015873015872,
+            "similarity": 0.74295574426651
+          },
+          {
+            "chunk_id": "orion:1",
+            "score": 0.015625,
+            "similarity": 0.720227837562561
+          },
+          {
+            "chunk_id": "orion:5",
+            "score": 0.015384615384615385,
+            "similarity": 0.7193518280982971
+          },
+          {
+            "chunk_id": "orion:2",
+            "score": 0.015151515151515152,
+            "similarity": 0.7113950848579407
+          },
+          {
+            "chunk_id": "orion:0",
+            "score": 0.014925373134328358,
+            "similarity": 0.7095245122909546
+          },
+          {
+            "chunk_id": "orion:4",
+            "score": 0.014705882352941176,
+            "similarity": 0.6960538625717163
+          }
+        ]
+      },
+      "metrics": {
+        "dense": {},
+        "bm25": {},
+        "hybrid": {}
+      },
+      "gate": {
+        "has_context": true,
+        "max_similarity": 0.7556997537612915,
+        "lexical_coverage": 0.0,
+        "accepted": true,
+        "complete_evidence": null
+      }
+    }
+  ],
+  "summary": {
+    "bm25": {
+      "n": 16,
+      "question_mean": {
+        "evidence_recall@1": 0.84375,
+        "complete@1": 0.8125,
+        "hit@1": 0.875,
+        "precision@1": 0.875,
+        "evidence_recall@3": 0.9375,
+        "complete@3": 0.9375,
+        "hit@3": 0.9375,
+        "precision@3": 0.47916666666666663,
+        "evidence_recall@6": 0.9375,
+        "complete@6": 0.9375,
+        "hit@6": 0.9375,
+        "precision@6": 0.4479166666666667,
+        "mrr@6": 0.8958333333333334
+      },
+      "document_macro": {
+        "evidence_recall@1": 0.84375,
+        "complete@1": 0.8125,
+        "hit@1": 0.875,
+        "precision@1": 0.875,
+        "evidence_recall@3": 0.9375,
+        "complete@3": 0.9375,
+        "hit@3": 0.9375,
+        "precision@3": 0.47916666666666663,
+        "evidence_recall@6": 0.9375,
+        "complete@6": 0.9375,
+        "hit@6": 0.9375,
+        "precision@6": 0.4479166666666667,
+        "mrr@6": 0.8958333333333333
+      },
+      "per_document": {
+        "atlas": {
+          "n": 8,
+          "evidence_recall@1": 0.8125,
+          "complete@1": 0.75,
+          "hit@1": 0.875,
+          "precision@1": 0.875,
+          "evidence_recall@3": 0.875,
+          "complete@3": 0.875,
+          "hit@3": 0.875,
+          "precision@3": 0.5416666666666666,
+          "evidence_recall@6": 0.875,
+          "complete@6": 0.875,
+          "hit@6": 0.875,
+          "precision@6": 0.5208333333333334,
+          "mrr@6": 0.875
+        },
+        "orion": {
+          "n": 8,
+          "evidence_recall@1": 0.875,
+          "complete@1": 0.875,
+          "hit@1": 0.875,
+          "precision@1": 0.875,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.41666666666666663,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.375,
+          "mrr@6": 0.9166666666666666
+        }
+      },
+      "by_tag": {
+        "crosslingual": {
+          "n": 2,
+          "complete@6": 0.5
+        },
+        "exact": {
+          "n": 3,
+          "complete@6": 1.0
+        },
+        "false_premise": {
+          "n": 1,
+          "complete@6": 1.0
+        },
+        "multi_evidence": {
+          "n": 4,
+          "complete@6": 1.0
+        },
+        "negation": {
+          "n": 2,
+          "complete@6": 1.0
+        },
+        "paraphrase": {
+          "n": 5,
+          "complete@6": 1.0
+        },
+        "version_disambiguation": {
+          "n": 1,
+          "complete@6": 1.0
+        }
+      }
+    },
+    "dense": {
+      "n": 16,
+      "question_mean": {
+        "evidence_recall@1": 0.96875,
+        "complete@1": 0.9375,
+        "hit@1": 1.0,
+        "precision@1": 1.0,
+        "evidence_recall@3": 1.0,
+        "complete@3": 1.0,
+        "hit@3": 1.0,
+        "precision@3": 0.35416666666666663,
+        "evidence_recall@6": 1.0,
+        "complete@6": 1.0,
+        "hit@6": 1.0,
+        "precision@6": 0.17708333333333331,
+        "mrr@6": 1.0
+      },
+      "document_macro": {
+        "evidence_recall@1": 0.96875,
+        "complete@1": 0.9375,
+        "hit@1": 1.0,
+        "precision@1": 1.0,
+        "evidence_recall@3": 1.0,
+        "complete@3": 1.0,
+        "hit@3": 1.0,
+        "precision@3": 0.35416666666666663,
+        "evidence_recall@6": 1.0,
+        "complete@6": 1.0,
+        "hit@6": 1.0,
+        "precision@6": 0.17708333333333331,
+        "mrr@6": 1.0
+      },
+      "per_document": {
+        "atlas": {
+          "n": 8,
+          "evidence_recall@1": 0.9375,
+          "complete@1": 0.875,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.375,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.1875,
+          "mrr@6": 1.0
+        },
+        "orion": {
+          "n": 8,
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "by_tag": {
+        "crosslingual": {
+          "n": 2,
+          "complete@6": 1.0
+        },
+        "exact": {
+          "n": 3,
+          "complete@6": 1.0
+        },
+        "false_premise": {
+          "n": 1,
+          "complete@6": 1.0
+        },
+        "multi_evidence": {
+          "n": 4,
+          "complete@6": 1.0
+        },
+        "negation": {
+          "n": 2,
+          "complete@6": 1.0
+        },
+        "paraphrase": {
+          "n": 5,
+          "complete@6": 1.0
+        },
+        "version_disambiguation": {
+          "n": 1,
+          "complete@6": 1.0
+        }
+      }
+    },
+    "hybrid": {
+      "n": 16,
+      "question_mean": {
+        "evidence_recall@1": 0.96875,
+        "complete@1": 0.9375,
+        "hit@1": 1.0,
+        "precision@1": 1.0,
+        "evidence_recall@3": 1.0,
+        "complete@3": 1.0,
+        "hit@3": 1.0,
+        "precision@3": 0.35416666666666663,
+        "evidence_recall@6": 1.0,
+        "complete@6": 1.0,
+        "hit@6": 1.0,
+        "precision@6": 0.17708333333333331,
+        "mrr@6": 1.0
+      },
+      "document_macro": {
+        "evidence_recall@1": 0.96875,
+        "complete@1": 0.9375,
+        "hit@1": 1.0,
+        "precision@1": 1.0,
+        "evidence_recall@3": 1.0,
+        "complete@3": 1.0,
+        "hit@3": 1.0,
+        "precision@3": 0.35416666666666663,
+        "evidence_recall@6": 1.0,
+        "complete@6": 1.0,
+        "hit@6": 1.0,
+        "precision@6": 0.17708333333333331,
+        "mrr@6": 1.0
+      },
+      "per_document": {
+        "atlas": {
+          "n": 8,
+          "evidence_recall@1": 0.9375,
+          "complete@1": 0.875,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.375,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.1875,
+          "mrr@6": 1.0
+        },
+        "orion": {
+          "n": 8,
+          "evidence_recall@1": 1.0,
+          "complete@1": 1.0,
+          "hit@1": 1.0,
+          "precision@1": 1.0,
+          "evidence_recall@3": 1.0,
+          "complete@3": 1.0,
+          "hit@3": 1.0,
+          "precision@3": 0.3333333333333333,
+          "evidence_recall@6": 1.0,
+          "complete@6": 1.0,
+          "hit@6": 1.0,
+          "precision@6": 0.16666666666666666,
+          "mrr@6": 1.0
+        }
+      },
+      "by_tag": {
+        "crosslingual": {
+          "n": 2,
+          "complete@6": 1.0
+        },
+        "exact": {
+          "n": 3,
+          "complete@6": 1.0
+        },
+        "false_premise": {
+          "n": 1,
+          "complete@6": 1.0
+        },
+        "multi_evidence": {
+          "n": 4,
+          "complete@6": 1.0
+        },
+        "negation": {
+          "n": 2,
+          "complete@6": 1.0
+        },
+        "paraphrase": {
+          "n": 5,
+          "complete@6": 1.0
+        },
+        "version_disambiguation": {
+          "n": 1,
+          "complete@6": 1.0
+        }
+      }
+    }
+  },
+  "gate": {
+    "answerable_n": 16,
+    "false_rejections": 0,
+    "unanswerable_n": 8,
+    "false_acceptances": 7,
+    "accepted_without_complete_evidence": 0,
+    "negative_strata": {
+      "hard_negative": {
+        "n": 5,
+        "accepted": 5
+      },
+      "out_of_domain": {
+        "n": 2,
+        "accepted": 1
+      },
+      "unsupported_exception": {
+        "n": 1,
+        "accepted": 1
+      }
+    }
+  },
+  "predictions": [],
+  "calibration": {
+    "objective": "minimum balanced error; ties: FN, cosine, coverage ascending",
+    "selected": {
+      "cosine": 0.8,
+      "coverage": 0.5,
+      "balanced_error": 0.28125,
+      "false_rejections": 1,
+      "false_acceptances": 4
+    },
+    "trials": [
+      {
+        "cosine": 0.55,
+        "coverage": 0.25,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.55,
+        "coverage": 0.5,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.55,
+        "coverage": 0.75,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.55,
+        "coverage": 1.0,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.6,
+        "coverage": 0.25,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.6,
+        "coverage": 0.5,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.6,
+        "coverage": 0.75,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.6,
+        "coverage": 1.0,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.65,
+        "coverage": 0.25,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.65,
+        "coverage": 0.5,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.65,
+        "coverage": 0.75,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.65,
+        "coverage": 1.0,
+        "balanced_error": 0.5,
+        "false_rejections": 0,
+        "false_acceptances": 8
+      },
+      {
+        "cosine": 0.7,
+        "coverage": 0.25,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.7,
+        "coverage": 0.5,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.7,
+        "coverage": 0.75,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.7,
+        "coverage": 1.0,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.72,
+        "coverage": 0.25,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.72,
+        "coverage": 0.5,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.72,
+        "coverage": 0.75,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.72,
+        "coverage": 1.0,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.75,
+        "coverage": 0.25,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.75,
+        "coverage": 0.5,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.75,
+        "coverage": 0.75,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.75,
+        "coverage": 1.0,
+        "balanced_error": 0.4375,
+        "false_rejections": 0,
+        "false_acceptances": 7
+      },
+      {
+        "cosine": 0.8,
+        "coverage": 0.25,
+        "balanced_error": 0.34375,
+        "false_rejections": 1,
+        "false_acceptances": 5
+      },
+      {
+        "cosine": 0.8,
+        "coverage": 0.5,
+        "balanced_error": 0.28125,
+        "false_rejections": 1,
+        "false_acceptances": 4
+      },
+      {
+        "cosine": 0.8,
+        "coverage": 0.75,
+        "balanced_error": 0.28125,
+        "false_rejections": 1,
+        "false_acceptances": 4
+      },
+      {
+        "cosine": 0.8,
+        "coverage": 1.0,
+        "balanced_error": 0.28125,
+        "false_rejections": 1,
+        "false_acceptances": 4
+      },
+      {
+        "cosine": 0.85,
+        "coverage": 0.25,
+        "balanced_error": 0.34375,
+        "false_rejections": 3,
+        "false_acceptances": 4
+      },
+      {
+        "cosine": 0.85,
+        "coverage": 0.5,
+        "balanced_error": 0.28125,
+        "false_rejections": 5,
+        "false_acceptances": 2
+      },
+      {
+        "cosine": 0.85,
+        "coverage": 0.75,
+        "balanced_error": 0.34375,
+        "false_rejections": 11,
+        "false_acceptances": 0
+      },
+      {
+        "cosine": 0.85,
+        "coverage": 1.0,
+        "balanced_error": 0.375,
+        "false_rejections": 12,
+        "false_acceptances": 0
+      },
+      {
+        "cosine": 0.9,
+        "coverage": 0.25,
+        "balanced_error": 0.34375,
+        "false_rejections": 3,
+        "false_acceptances": 4
+      },
+      {
+        "cosine": 0.9,
+        "coverage": 0.5,
+        "balanced_error": 0.3125,
+        "false_rejections": 6,
+        "false_acceptances": 2
+      },
+      {
+        "cosine": 0.9,
+        "coverage": 0.75,
+        "balanced_error": 0.375,
+        "false_rejections": 12,
+        "false_acceptances": 0
+      },
+      {
+        "cosine": 0.9,
+        "coverage": 1.0,
+        "balanced_error": 0.4375,
+        "false_rejections": 14,
+        "false_acceptances": 0
+      }
+    ]
+  }
+}
