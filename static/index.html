@@ -1,102 +1,112 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
   <title>DocChat — чат с PDF</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234f46e5'/><path d='M10 8h8l5 5v11H10z' fill='white'/></svg>">
-  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23212121'/><path d='M10 8h8l5 5v11H10z' fill='white'/></svg>">
+  <link rel="stylesheet" href="/static/styles.css?v=noir-1">
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
-  <script src="/static/app.js" defer></script>
+  <script src="/static/app.js?v=noir-1" defer></script>
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v5h5" /><path d="M9 13h6M9 17h4" /></svg>
-        </div>
-        <div>
-          <div class="brand-name">DocChat</div>
-          <div class="brand-sub">Локальный RAG по PDF</div>
-        </div>
+  <div class="layout" id="layout">
+    <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Закрыть список документов" hidden></button>
+    <aside class="sidebar" id="sidebar" aria-label="Документы">
+      <div class="sidebar-header">
+        <a class="brand" href="/" aria-label="DocChat — главная">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+          <span>DocChat</span>
+        </a>
+        <button class="icon-btn sidebar-close" id="sidebar-close" type="button" aria-label="Закрыть список документов">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
       </div>
-
-      <label class="dropzone" id="dropzone">
-        <input type="file" id="file-input" accept="application/pdf,.pdf" hidden>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5" /><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" /></svg>
-        <span class="dropzone-title">Загрузить PDF</span>
-        <span class="dropzone-hint">Перетащите файл или нажмите</span>
-      </label>
-
-      <div class="section-title">Документы</div>
-      <ul class="doc-list" id="doc-list"></ul>
-      <p class="empty-docs" id="empty-docs">Пока нет документов</p>
-
-      <div class="status" id="status" title="Статус модели">
-        <span class="status-dot" id="status-dot"></span>
-        <span id="status-text">Проверяем модель…</span>
+      <input type="file" id="file-input" accept="application/pdf,.pdf" hidden>
+      <button class="upload-action" id="dropzone" type="button">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+        <span>Добавить PDF</span>
+      </button>
+      <div class="library">
+        <h2 class="section-title">Ваши документы</h2>
+        <ul class="doc-list" id="doc-list"></ul>
+        <p class="empty-docs" id="empty-docs">Добавленные документы<br>появятся здесь.</p>
+      </div>
+      <div class="sidebar-footer">
+        <div class="status" id="status" title="Состояние подключения к модели" role="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="status-text">Подключение к модели…</span>
+        </div>
+        <span class="local-note">PDF · Поиск · Источники</span>
       </div>
     </aside>
-
-    <main class="chat">
+    <main class="chat empty" id="chat">
       <header class="chat-header">
-        <button class="icon-btn menu-btn" id="menu-btn" aria-label="Документы">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <button class="icon-btn" id="menu-btn" type="button" aria-label="Скрыть список документов" aria-controls="sidebar" aria-expanded="true">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
         <div class="chat-title">
-          <h1 id="doc-title">Выберите документ</h1>
+          <h1 id="doc-title">Чат с документом</h1>
           <span id="doc-meta" class="doc-meta"></span>
         </div>
-        <a class="icon-btn" id="open-pdf" target="_blank" rel="noopener" title="Открыть PDF" hidden>
-          <svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9" /><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg>
-        </a>
-        <button class="icon-btn" id="clear-btn" title="Очистить чат" hidden>
-          <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" /></svg>
-        </button>
-      </header>
-
-      <section class="messages" id="messages" aria-live="polite">
-        <div class="placeholder" id="placeholder">
-          <div class="placeholder-icon">
-            <svg viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v5h5" /></svg>
-          </div>
-          <h2 id="placeholder-title">Загрузите PDF, чтобы начать</h2>
-          <p id="placeholder-text">Модель будет отвечать только по содержимому документа и укажет страницы-источники.</p>
-          <div class="suggestions" id="suggestions" hidden>
-            <button class="suggestion">О чём этот документ? Кратко перечисли основные разделы.</button>
-            <button class="suggestion">Какие ключевые цифры и сроки упоминаются в документе?</button>
-          </div>
+        <div class="header-actions">
+          <a class="open-pdf" id="open-pdf" target="_blank" rel="noopener" aria-label="Открыть исходный PDF" hidden>
+            <span>Открыть PDF</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+          </a>
+          <button class="icon-btn" id="clear-btn" type="button" title="Очистить чат" aria-label="Очистить чат" hidden>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
+          </button>
         </div>
-      </section>
-
-      <form class="composer" id="composer">
-        <textarea id="question" rows="1" maxlength="2000"
-                  placeholder="Задайте вопрос по документу…" disabled></textarea>
-        <button type="submit" class="send-btn" id="send-btn" disabled aria-label="Отправить">
-          <svg class="icon-send" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          <svg class="icon-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5" /></svg>
-        </button>
-      </form>
-      <p class="composer-hint">Enter — отправить, Shift+Enter — перенос строки</p>
+      </header>
+      <div class="conversation">
+        <section class="messages" id="messages" aria-label="Переписка" aria-live="polite">
+          <div class="placeholder" id="placeholder">
+            <span class="eyebrow">ВАШ ДОКУМЕНТ. В ДИАЛОГЕ.</span>
+            <h2 id="placeholder-title">Ближе к сути.</h2>
+            <p id="placeholder-text">Добавьте документ, чтобы задать первый вопрос.</p>
+            <button class="empty-upload" id="empty-upload" type="button">Добавить PDF</button>
+          </div>
+        </section>
+        <div class="composer-dock">
+          <form class="composer" id="composer">
+            <label class="sr-only" for="question">Вопрос по документу</label>
+            <textarea id="question" rows="1" maxlength="2000" aria-describedby="composer-hint" placeholder="Сначала добавьте PDF" disabled></textarea>
+            <div class="composer-toolbar">
+              <button class="attach-btn" id="attach-btn" type="button" title="Добавить PDF" aria-label="Добавить PDF">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+                <span>PDF</span>
+              </button>
+              <button type="submit" class="send-btn" id="send-btn" disabled aria-label="Отправить">
+                <svg class="icon-send" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <svg class="icon-stop" aria-hidden="true" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
+              </button>
+            </div>
+          </form>
+          <div class="suggestions" id="suggestions" hidden>
+            <button class="suggestion" type="button" data-question="Кратко перескажи содержание документа и перечисли основные разделы.">Краткий пересказ</button>
+            <button class="suggestion" type="button" data-question="Какие важные цифры, условия и сроки есть в документе?">Важные детали</button>
+          </div>
+          <p class="composer-hint" id="composer-hint">Проверяйте важные сведения по источникам.</p>
+        </div>
+      </div>
     </main>
   </div>
-
   <div class="toast" id="toast" role="alert" hidden></div>
-
   <template id="doc-item">
     <li class="doc-item">
-      <button class="doc-select">
-        <svg class="doc-icon" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v5h5" /></svg>
+      <button class="doc-select" type="button">
+        <svg class="doc-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/></svg>
         <span class="doc-info">
           <span class="doc-name"></span>
           <span class="doc-sub"></span>
           <span class="progress"><span class="progress-bar"></span></span>
         </span>
       </button>
-      <button class="doc-delete" title="Удалить документ" aria-label="Удалить документ">
-        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      <button class="doc-delete" type="button" title="Удалить документ" aria-label="Удалить документ">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </li>
   </template>

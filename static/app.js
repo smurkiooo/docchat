@@ -4,6 +4,12 @@ const $ = (selector) => document.querySelector(selector);
 
 const els = {
   sidebar: $("#sidebar"),
+  layout: $("#layout"),
+  chat: $("#chat"),
+  backdrop: $("#sidebar-backdrop"),
+  sidebarClose: $("#sidebar-close"),
+  emptyUpload: $("#empty-upload"),
+  attachBtn: $("#attach-btn"),
   menuBtn: $("#menu-btn"),
   dropzone: $("#dropzone"),
   fileInput: $("#file-input"),
@@ -33,6 +39,8 @@ const state = {
   controller: null,
   pollTimer: null,
   loadToken: 0,
+  sidebarOpen: false,
+  sidebarCollapsed: localStorageGet("docchat.sidebarCollapsed") === "true",
 };
 
 
@@ -80,14 +88,14 @@ const CITATION = /\[(стр\.|с\.|p\.|pp\.|page)\s*(\d+)([^\]]{0,20})\]/gi;
 
 function renderMarkdown(text) {
   const withCitations = text.replace(CITATION, (_, label, page, rest) =>
-    `<span class="cite" data-page="${page}">${escapeHtml(label + " " + page + rest)}</span>`);
+    `<button type="button" class="cite" data-page="${page}">${escapeHtml(label + " " + page + rest)}</button>`);
   if (window.marked && window.DOMPurify) {
     return DOMPurify.sanitize(marked.parse(withCitations, { breaks: true }));
   }
 
   const escaped = escapeHtml(text).replace(/\n/g, "<br>");
   return escaped.replace(CITATION, (_, label, page, rest) =>
-    `<span class="cite" data-page="${page}">${label} ${page}${rest}</span>`);
+    `<button type="button" class="cite" data-page="${page}">${label} ${page}${rest}</button>`);
 }
 
 
@@ -98,7 +106,7 @@ function activeDocument() {
 function documentSubtitle(doc) {
   if (doc.status === "processing") return `Индексация… ${Math.round(doc.progress * 100)}%`;
   if (doc.status === "error") return doc.error || "Ошибка";
-  return `${pluralPages(doc.pages)} · ${doc.chunks} фрагментов`;
+  return pluralPages(doc.pages);
 }
 
 function renderDocuments() {
@@ -108,6 +116,7 @@ function renderDocuments() {
     const item = els.docTemplate.content.firstElementChild.cloneNode(true);
     item.classList.add(doc.status);
     item.classList.toggle("active", doc.id === state.activeId);
+    if (doc.id === state.activeId) item.querySelector(".doc-select").setAttribute("aria-current", "true");
     item.querySelector(".doc-name").textContent = doc.filename;
     item.querySelector(".doc-name").title = doc.filename;
     item.querySelector(".doc-sub").textContent = documentSubtitle(doc);
@@ -142,7 +151,7 @@ async function refreshDocuments() {
 
 function renderHeader() {
   const doc = activeDocument();
-  els.title.textContent = doc ? doc.filename : "Выберите документ";
+  els.title.textContent = doc ? doc.filename : "DocChat";
   els.meta.textContent = doc ? documentSubtitle(doc) : "";
   els.openPdf.hidden = !doc;
   els.clearBtn.hidden = !doc || doc.status !== "ready";
@@ -156,13 +165,13 @@ function renderHeader() {
   updateSendButton();
 
   if (!doc) {
-    setPlaceholder("Загрузите PDF, чтобы начать", "Модель будет отвечать только по содержимому документа и укажет страницы-источники.");
+    setPlaceholder("Ближе к сути.", "Добавьте PDF. Задайте вопрос. Найдите ответ и его источник.");
   } else if (doc.status === "processing") {
-    setPlaceholder("Индексируем документ…", "Разбиваем текст на фрагменты и строим эмбеддинги. Это займёт от нескольких секунд до минуты.");
+    setPlaceholder("Готовим документ.", "Текст обрабатывается. Скоро можно будет задать первый вопрос.");
   } else if (doc.status === "error") {
     setPlaceholder("Не удалось обработать документ", doc.error || "");
   } else {
-    setPlaceholder("Задайте вопрос по документу", "Ответ будет основан только на тексте PDF, со ссылками на страницы.", true);
+    setPlaceholder("Спросите главное.", "Краткий пересказ, детали или конкретный вопрос — начните с того, что важно вам.", true);
   }
 }
 
@@ -170,13 +179,14 @@ function setPlaceholder(title, text, withSuggestions = false) {
   els.placeholderTitle.textContent = title;
   els.placeholderText.textContent = text;
   els.suggestions.hidden = !withSuggestions;
+  els.emptyUpload.hidden = Boolean(activeDocument());
 }
 
 async function selectDocument(id) {
   if (state.controller) state.controller.abort();
   state.activeId = id;
   localStorageSet("docchat.activeId", id);
-  els.sidebar.classList.remove("open");
+  closeSidebar();
   renderDocuments();
   renderHeader();
   await loadMessages();
@@ -223,6 +233,7 @@ async function uploadFile(file) {
 function clearMessages() {
   els.messages.querySelectorAll(".msg").forEach((m) => m.remove());
   els.placeholder.hidden = false;
+  els.chat.classList.add("empty");
 }
 
 async function loadMessages() {
@@ -247,6 +258,7 @@ async function loadMessages() {
 
 function appendMessage(role) {
   els.placeholder.hidden = true;
+  els.chat.classList.remove("empty");
   const wrapper = document.createElement("div");
   wrapper.className = `msg ${role}`;
   const bubble = document.createElement("div");
@@ -258,7 +270,6 @@ function appendMessage(role) {
 
 function renderSources(view, sources, docId = state.activeId) {
   if (!sources?.length) return;
-  const doc = activeDocument();
   const details = document.createElement("details");
   details.className = "sources";
   details.innerHTML = `<summary><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>Источники (${sources.length})</summary>`;
@@ -274,12 +285,16 @@ function renderSources(view, sources, docId = state.activeId) {
     item.innerHTML = `
       <div class="source-head">
         <a href="/api/documents/${docId}/file#page=${source.page_start}" target="_blank" rel="noopener">${pages}</a>
-        <span class="source-score" title="Косинусная близость к вопросу">${source.similarity != null ? `sim ${source.similarity.toFixed(2)}` : "BM25"}</span>
+        <button class="source-toggle" type="button" aria-expanded="false">Развернуть</button>
       </div>
       <div class="source-text"></div>`;
     item.querySelector(".source-text").textContent = source.text;
-    item.addEventListener("dblclick", () => item.classList.toggle("expanded"));
-    item.title = "Двойной клик — показать полностью";
+    item.querySelector(".source-toggle").addEventListener("click", () => {
+      const expanded = item.classList.toggle("expanded");
+      const button = item.querySelector(".source-toggle");
+      button.setAttribute("aria-expanded", String(expanded));
+      button.textContent = expanded ? "Свернуть" : "Развернуть";
+    });
     list.append(item);
   }
   details.append(list);
@@ -301,7 +316,9 @@ function highlightSource(cite) {
   if (!match) return;
   sources.forEach((s) => s.classList.remove("highlight"));
   match.classList.add("highlight", "expanded");
-  match.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  match.querySelector(".source-toggle").setAttribute("aria-expanded", "true");
+  match.querySelector(".source-toggle").textContent = "Свернуть";
+  match.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
   setTimeout(() => match.classList.remove("highlight"), 2000);
 }
 
@@ -338,6 +355,7 @@ async function ask(question) {
   const doc = activeDocument();
   if (!doc || doc.status !== "ready" || state.controller) return;
 
+  ++state.loadToken;
   appendMessage("user").bubble.textContent = question;
   const view = appendMessage("assistant");
   view.bubble.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
@@ -414,8 +432,8 @@ async function checkHealth() {
     els.status.classList.toggle("ok", health.llm_available);
     els.status.classList.toggle("bad", !health.llm_available);
     els.statusText.textContent = health.llm_available
-      ? `${health.llm_model} · готова`
-      : `${health.llm_model} · недоступна`;
+      ? "Модель подключена"
+      : "Модель недоступна";
     els.status.title = `LLM: ${health.llm_provider} / ${health.llm_model}\nЭмбеддинги: ${health.embedding_model}`;
   } catch {
     els.status.classList.add("bad");
@@ -454,7 +472,7 @@ els.question.addEventListener("keydown", (e) => {
 
 els.suggestions.addEventListener("click", (e) => {
   const button = e.target.closest(".suggestion");
-  if (button) ask(button.textContent);
+  if (button) ask(button.dataset.question || button.textContent);
 });
 
 els.messages.addEventListener("click", (e) => {
@@ -473,12 +491,61 @@ els.clearBtn.addEventListener("click", async () => {
   }
 });
 
-els.menuBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  els.sidebar.classList.toggle("open");
-});
-document.querySelector(".chat").addEventListener("click", () => els.sidebar.classList.remove("open"));
+const mobileLayout = matchMedia("(max-width: 760px)");
 
+function syncSidebar() {
+  const mobile = mobileLayout.matches;
+  const visible = mobile ? state.sidebarOpen : !state.sidebarCollapsed;
+  els.layout.classList.toggle("sidebar-collapsed", !mobile && !visible);
+  els.sidebar.classList.toggle("open", mobile && visible);
+  els.sidebar.inert = !visible;
+  els.sidebar.setAttribute("aria-hidden", String(!visible));
+  els.backdrop.hidden = !mobile || !visible;
+  els.chat.inert = mobile && visible;
+  els.menuBtn.setAttribute("aria-expanded", String(visible));
+  els.menuBtn.setAttribute("aria-label", visible ? "Скрыть список документов" : "Показать список документов");
+  if (mobile && visible) {
+    els.sidebar.setAttribute("role", "dialog");
+    els.sidebar.setAttribute("aria-modal", "true");
+  } else {
+    els.sidebar.removeAttribute("role");
+    els.sidebar.removeAttribute("aria-modal");
+  }
+}
+
+function closeSidebar() {
+  const wasOpen = state.sidebarOpen;
+  state.sidebarOpen = false;
+  syncSidebar();
+  if (wasOpen && mobileLayout.matches) els.menuBtn.focus();
+}
+
+els.menuBtn.addEventListener("click", () => {
+  if (mobileLayout.matches) state.sidebarOpen = !state.sidebarOpen;
+  else {
+    state.sidebarCollapsed = !state.sidebarCollapsed;
+    localStorageSet("docchat.sidebarCollapsed", String(state.sidebarCollapsed));
+  }
+  syncSidebar();
+  if (mobileLayout.matches && state.sidebarOpen) els.sidebarClose.focus({ preventScroll: true });
+});
+els.sidebarClose.addEventListener("click", closeSidebar);
+els.backdrop.addEventListener("click", closeSidebar);
+mobileLayout.addEventListener("change", closeSidebar);
+document.addEventListener("keydown", (event) => {
+  if (!mobileLayout.matches || !state.sidebarOpen) return;
+  if (event.key === "Escape") closeSidebar();
+  if (event.key === "Tab") {
+    const focusable = [...els.sidebar.querySelectorAll("a[href], button:not(:disabled)")];
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
+});
+for (const button of [els.dropzone, els.emptyUpload, els.attachBtn]) {
+  button.addEventListener("click", () => els.fileInput.click());
+}
+syncSidebar();
 
 checkHealth();
 setInterval(checkHealth, 30000);
