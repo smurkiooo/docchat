@@ -1,6 +1,6 @@
 # Evaluation report
 
-Run: `2a67ed024cf74a74b1de3e35258e5135` · split: **dev** · backend: **real**
+Run: `2a67ed024cf74a74b1de3e35258e5135` · split: dev · backend: real
 
 Synthetic, jointly authored fixtures; not an independent generalization benchmark.
 No statistical significance or production-quality claim is made.

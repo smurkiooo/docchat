@@ -1,6 +1,6 @@
 # Evaluation report
 
-Run: `2d08e5a19b6449a192370f2eb5dcee0d` · split: **dev** · backend: **real**
+Run: `2d08e5a19b6449a192370f2eb5dcee0d` · split: dev · backend: real
 
 Synthetic, jointly authored fixtures; not an independent generalization benchmark.
 No statistical significance or production-quality claim is made.
@@ -32,7 +32,7 @@ Per-case rankings, all @1/3/6 metrics, document/tag breakdowns, config, hashes, 
 
 Generated 28/28 records (single-turn and dialogues).
 Citation presence and refusal templates are diagnostics, not correctness scores.
-Rubric review completed by Codex (assistant, non-independent); see the adjacent review JSONL and review-summary JSON.
+Automated rubric review is complete. It is not an independent human review; see the adjacent review JSONL and review-summary JSON.
 
 Model revision: d128750597153bb5987e10b1c3493a34e5a4502a.
 See docs/EVALUATION.md for the protocol and limitations.
