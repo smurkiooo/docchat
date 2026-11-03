@@ -9,7 +9,9 @@ const els = {
   backdrop: $("#sidebar-backdrop"),
   sidebarClose: $("#sidebar-close"),
   emptyUpload: $("#empty-upload"),
-  attachBtn: $("#attach-btn"),
+  composerDock: $("#composer-dock"),
+  uploadHint: $("#upload-hint"),
+  indexProgress: $("#index-progress"),
   menuBtn: $("#menu-btn"),
   dropzone: $("#dropzone"),
   fileInput: $("#file-input"),
@@ -39,6 +41,9 @@ const state = {
   controller: null,
   pollTimer: null,
   loadToken: 0,
+  libraryLoaded: false,
+  uploading: false,
+  focusQuestion: false,
   sidebarOpen: false,
   sidebarCollapsed: localStorageGet("docchat.sidebarCollapsed") === "true",
 };
@@ -104,8 +109,8 @@ function activeDocument() {
 }
 
 function documentSubtitle(doc) {
-  if (doc.status === "processing") return `Индексация… ${Math.round(doc.progress * 100)}%`;
-  if (doc.status === "error") return doc.error || "Ошибка";
+  if (doc.status === "processing") return `Обработка… ${Math.round(doc.progress * 100)}%`;
+  if (doc.status === "error") return "Ошибка обработки";
   return pluralPages(doc.pages);
 }
 
@@ -130,6 +135,7 @@ function renderDocuments() {
 async function refreshDocuments() {
   const previous = activeDocument();
   state.documents = await api("/api/documents");
+  state.libraryLoaded = true;
   renderDocuments();
 
   const current = activeDocument();
@@ -158,6 +164,15 @@ function renderHeader() {
   if (doc) els.openPdf.href = `/api/documents/${doc.id}/file`;
 
   const ready = doc?.status === "ready";
+  const welcome = !state.documents.length;
+  els.layout.classList.toggle("welcome", welcome);
+  els.menuBtn.hidden = welcome;
+  els.composerDock.hidden = !ready;
+  els.indexProgress.hidden = doc?.status !== "processing";
+  els.indexProgress.value = doc?.progress || 0;
+  els.uploadHint.hidden = !welcome;
+  if (!state.uploading) els.emptyUpload.textContent = "Выбрать PDF";
+  syncSidebar();
   els.question.disabled = !ready;
   els.question.placeholder = ready
     ? "Задайте вопрос по документу…"
@@ -165,13 +180,17 @@ function renderHeader() {
   updateSendButton();
 
   if (!doc) {
-    setPlaceholder("Ближе к сути.", "Добавьте PDF. Задайте вопрос. Найдите ответ и его источник.");
+    setPlaceholder("Чат с PDF", "Загрузите документ, чтобы задать вопрос и найти нужные страницы.");
   } else if (doc.status === "processing") {
-    setPlaceholder("Готовим документ.", "Текст обрабатывается. Скоро можно будет задать первый вопрос.");
+    setPlaceholder("Обрабатываем PDF", `Готово ${Math.round(doc.progress * 100)}%. Когда обработка закончится, здесь появится чат.`);
   } else if (doc.status === "error") {
     setPlaceholder("Не удалось обработать документ", doc.error || "");
   } else {
-    setPlaceholder("Спросите главное.", "Краткий пересказ, детали или конкретный вопрос — начните с того, что важно вам.", true);
+    setPlaceholder("Что вы хотите узнать?", "Задайте вопрос или выберите один из примеров ниже.", true);
+    if (state.focusQuestion) {
+      state.focusQuestion = false;
+      if (!mobileLayout.matches) els.question.focus({ preventScroll: true });
+    }
   }
 }
 
@@ -205,11 +224,15 @@ async function deleteDocument(doc) {
 }
 
 async function uploadFile(file) {
-  if (!file) return;
+  if (!file || state.uploading) return;
   if (!file.name.toLowerCase().endsWith(".pdf")) {
     showToast("Поддерживаются только PDF-файлы.");
     return;
   }
+  state.uploading = true;
+  els.emptyUpload.disabled = true;
+  els.dropzone.disabled = true;
+  els.emptyUpload.textContent = "Загружаем…";
   const form = new FormData();
   form.append("file", file);
   els.dropzone.classList.add("dragover");
@@ -217,6 +240,8 @@ async function uploadFile(file) {
     const doc = await api("/api/documents", { method: "POST", body: form });
     if (state.controller) state.controller.abort();
     state.activeId = doc.id;
+    state.focusQuestion = true;
+    closeSidebar();
     localStorageSet("docchat.activeId", doc.id);
     clearMessages();
     await refreshDocuments();
@@ -224,7 +249,12 @@ async function uploadFile(file) {
   } catch (err) {
     showToast(err.message);
   } finally {
+    els.layout.classList.remove("dragover");
     els.dropzone.classList.remove("dragover");
+    state.uploading = false;
+    els.emptyUpload.disabled = false;
+    els.dropzone.disabled = false;
+    els.emptyUpload.textContent = "Выбрать PDF";
     els.fileInput.value = "";
   }
 }
@@ -445,13 +475,17 @@ async function checkHealth() {
 els.fileInput.addEventListener("change", () => uploadFile(els.fileInput.files[0]));
 
 for (const type of ["dragenter", "dragover"]) {
-  document.addEventListener(type, (e) => { e.preventDefault(); els.dropzone.classList.add("dragover"); });
+  document.addEventListener(type, (e) => {
+    if (!e.dataTransfer?.types.includes("Files")) return;
+    e.preventDefault();
+    els.layout.classList.add("dragover");
+  });
 }
 for (const type of ["dragleave", "drop"]) {
   document.addEventListener(type, (e) => {
     e.preventDefault();
     if (type === "dragleave" && e.relatedTarget) return;
-    els.dropzone.classList.remove("dragover");
+    els.layout.classList.remove("dragover");
   });
 }
 document.addEventListener("drop", (e) => uploadFile(e.dataTransfer?.files[0]));
@@ -495,8 +529,9 @@ const mobileLayout = matchMedia("(max-width: 760px)");
 
 function syncSidebar() {
   const mobile = mobileLayout.matches;
-  const visible = mobile ? state.sidebarOpen : !state.sidebarCollapsed;
-  els.layout.classList.toggle("sidebar-collapsed", !mobile && !visible);
+  const welcome = els.layout.classList.contains("welcome");
+  const visible = !welcome && (mobile ? state.sidebarOpen : !state.sidebarCollapsed);
+  els.layout.classList.toggle("sidebar-collapsed", !welcome && !mobile && !visible);
   els.sidebar.classList.toggle("open", mobile && visible);
   els.sidebar.inert = !visible;
   els.sidebar.setAttribute("aria-hidden", String(!visible));
@@ -542,11 +577,28 @@ document.addEventListener("keydown", (event) => {
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   }
 });
-for (const button of [els.dropzone, els.emptyUpload, els.attachBtn]) {
-  button.addEventListener("click", () => els.fileInput.click());
+els.dropzone.addEventListener("click", () => els.fileInput.click());
+els.emptyUpload.addEventListener("click", () => {
+  if (state.libraryLoaded) els.fileInput.click();
+  else loadLibrary();
+});
+
+async function loadLibrary() {
+  els.emptyUpload.hidden = true;
+  try {
+    await refreshDocuments();
+  } catch {
+    if (state.libraryLoaded) {
+      showToast("Не удалось загрузить историю. Обновите страницу.");
+      return;
+    }
+    setPlaceholder("Не удалось открыть библиотеку", "Проверьте, запущен ли сервер, и повторите попытку.");
+    els.emptyUpload.textContent = "Повторить";
+    els.emptyUpload.hidden = false;
+  }
 }
 syncSidebar();
 
 checkHealth();
 setInterval(checkHealth, 30000);
-refreshDocuments().catch((err) => showToast(err.message));
+loadLibrary();

@@ -6,13 +6,13 @@
   <meta name="color-scheme" content="dark">
   <title>DocChat — чат с PDF</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23212121'/><path d='M10 8h8l5 5v11H10z' fill='white'/></svg>">
-  <link rel="stylesheet" href="/static/styles.css?v=noir-1">
+  <link rel="stylesheet" href="/static/styles.css?v=flow-2">
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
-  <script src="/static/app.js?v=noir-1" defer></script>
+  <script src="/static/app.js?v=flow-2" defer></script>
 </head>
 <body>
-  <div class="layout" id="layout">
+  <div class="layout welcome" id="layout">
     <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Закрыть список документов" hidden></button>
     <aside class="sidebar" id="sidebar" aria-label="Документы">
       <div class="sidebar-header">
@@ -39,16 +39,15 @@
           <span class="status-dot" aria-hidden="true"></span>
           <span id="status-text">Подключение к модели…</span>
         </div>
-        <span class="local-note">PDF · Поиск · Источники</span>
       </div>
     </aside>
     <main class="chat empty" id="chat">
       <header class="chat-header">
-        <button class="icon-btn" id="menu-btn" type="button" aria-label="Скрыть список документов" aria-controls="sidebar" aria-expanded="true">
+        <button class="icon-btn" id="menu-btn" type="button" aria-label="Скрыть список документов" aria-controls="sidebar" aria-expanded="false" hidden>
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
         <div class="chat-title">
-          <h1 id="doc-title">Чат с документом</h1>
+          <h1 id="doc-title">DocChat</h1>
           <span id="doc-meta" class="doc-meta"></span>
         </div>
         <div class="header-actions">
@@ -64,21 +63,18 @@
       <div class="conversation">
         <section class="messages" id="messages" aria-label="Переписка" aria-live="polite">
           <div class="placeholder" id="placeholder">
-            <span class="eyebrow">ВАШ ДОКУМЕНТ. В ДИАЛОГЕ.</span>
-            <h2 id="placeholder-title">Ближе к сути.</h2>
-            <p id="placeholder-text">Добавьте документ, чтобы задать первый вопрос.</p>
-            <button class="empty-upload" id="empty-upload" type="button">Добавить PDF</button>
+            <h2 id="placeholder-title">Открываем библиотеку…</h2>
+            <p id="placeholder-text"></p>
+            <progress id="index-progress" max="1" value="0" aria-label="Обработка документа" hidden></progress>
+            <button class="empty-upload" id="empty-upload" type="button" hidden>Выбрать PDF</button>
+            <span class="upload-hint" id="upload-hint" hidden>или перетащите файл в окно</span>
           </div>
         </section>
-        <div class="composer-dock">
+        <div class="composer-dock" id="composer-dock" hidden>
           <form class="composer" id="composer">
             <label class="sr-only" for="question">Вопрос по документу</label>
             <textarea id="question" rows="1" maxlength="2000" aria-describedby="composer-hint" placeholder="Сначала добавьте PDF" disabled></textarea>
             <div class="composer-toolbar">
-              <button class="attach-btn" id="attach-btn" type="button" title="Добавить PDF" aria-label="Добавить PDF">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
-                <span>PDF</span>
-              </button>
               <button type="submit" class="send-btn" id="send-btn" disabled aria-label="Отправить">
                 <svg class="icon-send" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 <svg class="icon-stop" aria-hidden="true" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
